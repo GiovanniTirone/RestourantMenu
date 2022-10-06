@@ -9,3 +9,10 @@ Drinks:
 * Coffee
 * The
 * Orange juice
+
+Primi:
+* Insalata di riso e melone
+* Spaghetti ai carciofi e limone
+* Cous cous all’arancia
+* Vellutata di sedano rapa
+* Gazpacho di anguria e pomodoro
