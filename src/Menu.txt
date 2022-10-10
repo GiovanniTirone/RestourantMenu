@@ -2,7 +2,7 @@ Team-1 Ristorante!!!
 
 Tipo: vegano.
 
-Drinks:
+Bevande:
 * Acqua
 * Vino
 * Birra
