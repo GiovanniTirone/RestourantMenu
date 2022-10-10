@@ -1,14 +1,14 @@
-Team-1 Restourant!!!
+Team-1 Ristorante!!!
 
-Type: vegan.
+Tipo: vegano.
 
 Drinks:
-* Water
-* Wine
-* Beer
-* Coffee
+* Acqua
+* Vino
+* Birra
+* Caffè
 * The
-* Orange juice
+* Aranciata
 
 
 Primi:
