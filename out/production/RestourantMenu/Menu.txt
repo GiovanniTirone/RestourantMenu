@@ -1,0 +1,33 @@
+Team-1 Ristorante!!!
+
+Tipo: vegano.
+
+Bevande:
+* Acqua
+* Vino
+* Birra
+* Caffè
+* The
+* Aranciata
+
+
+Primi:
+* Insalata di riso e melone
+* Spaghetti ai carciofi e limone
+* Cous cous all’arancia
+* Vellutata di sedano rapa
+* Gazpacho di anguria e pomodoro
+
+Secondi:
+*Polpettone di fagioli e tofu alle erbe
+*Zucchine ripiene con crema di fagioli bianchi
+*Crostata salata vegana con cannellini e pomodori
+*Hamburger vegani di miglio, cannellini e olive
+*Sformato vegan di verdure estive
+
+Dolci:
+*Tiramisù vegano
+*Ciambellone vegano
+*Semifreddo vegano
+*Torta vegana al cioccolato
+*Torta vegana alle carote
