@@ -25,8 +25,6 @@ public class Main {
         menu.drinks.add(the);
         menu.drinks.add(orangeJuice);
 
-        System.out.println("drinks " + menu.drinks.toString());
-
         //print the menu
         System.out.println(menu.toString());
 

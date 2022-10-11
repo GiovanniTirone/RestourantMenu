@@ -20,7 +20,7 @@ public class Menu {
     public String toString () {
         return    "Restaurant name: " + restaurantName
                 + "\nType: " + type
-                + "\nDrinks: " + "\n " +drinks.toString();
+                + "\nDrinks: " +drinks.toString();
                 //+ "\nFirsts: " + seconds.toString()
                 //+ "\nSeconds: " + seconds.toString()
                 //+ "\nSweets: " + sweets.toString();

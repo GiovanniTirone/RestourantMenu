@@ -3,8 +3,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Drink extends Dish {
-    public String name;
-    public List<String> ingredients;
 
     public Drink (String name) {
         this.name = name;
@@ -23,8 +21,7 @@ public class Drink extends Dish {
 
     @Override
     public String toString( ){
-        return    " Name: " + this.name
-                + "\n Ingredients: " + this.ingredients.toString();
+        return    this.name + " -- Ingredients: " + this.ingredients.toString();
 
     }
 }
