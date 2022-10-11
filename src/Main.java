@@ -1,5 +1,3 @@
-import com.sun.tools.jconsole.JConsoleContext;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -27,6 +25,11 @@ public class Main {
 
         //print the menu
         System.out.println(menu.toString());
+
+
+        //create restaurant
+        Restaurant restaurant = Restaurant.getRestaurant();
+
 
     }
 }

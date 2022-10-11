@@ -6,5 +6,8 @@ abstract class Dish {
     public List<String> ingredients;
 
     @Override
-    abstract public String toString ();
+    public String toString( ){
+        return    this.name + " -- Ingredients: " + this.ingredients.toString();
+
+    }
 }
