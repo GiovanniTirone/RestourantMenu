@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -30,6 +31,21 @@ public class Main {
         //create restaurant
         Restaurant restaurant = Restaurant.getRestaurant();
 
+        User user1 = new User("Giovanni");
+       /*
+       Restaurant.tables[0].bookedDateTime = LocalDateTime.of(2022,10,12,12,00);
+       Restaurant.tables[1].bookedDateTime = LocalDateTime.of(2022,10,12,20,00);
+       Restaurant.tables[2].bookedDateTime = LocalDateTime.of(2022,10,15,11,30);
+       Restaurant.tables[3].bookedDateTime = LocalDateTime.of(2022,12,19,21,00);
+       Restaurant.tables[4].bookedDateTime = LocalDateTime.of(2022,11,20,23,22);
+    */
 
+       // user1.bookTable(4,);
+
+        System.out.println(Arrays.toString(Restaurant.tables));
+
+       restaurant.orderTablesByDates();
+
+        System.out.println(Arrays.toString(Restaurant.tables));
     }
 }
