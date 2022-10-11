@@ -19,9 +19,4 @@ public class Drink extends Dish {
         this.ingredients = new ArrayList<>(ingredients);
     }
 
-    @Override
-    public String toString( ){
-        return    this.name + " -- Ingredients: " + this.ingredients.toString();
-
-    }
 }
