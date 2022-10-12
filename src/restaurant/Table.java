@@ -1,3 +1,5 @@
+package restaurant;
+
 import java.time.*;
 
 public class Table {
@@ -12,7 +14,7 @@ public class Table {
 
     @Override
     public String toString() {
-        return "\nTable number: " + number + "\n  Seats: " + seats +"\n Bookings: " + bookings.toString();
+        return "\nrestaurant.Table number: " + number + "\n  Seats: " + seats +"\n Bookings: " + bookings.toString();
     }
 
     public LocalTime getTimeOfLunch

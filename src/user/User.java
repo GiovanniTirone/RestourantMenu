@@ -1,3 +1,7 @@
+package user;
+
+import restaurant.Restaurant;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 

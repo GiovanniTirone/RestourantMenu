@@ -1,12 +1,12 @@
-import java.util.List;
+package menu;
 
 public class Menu {
     public String restaurantName = "Ristorante Team-1" ;
     public String type = "Vegano";
-    public DishList <Drink> drinks;
-   /* public DishList <First> firsts;
-    public DishList <Second> seconds;
-    public DishList sweets;*/
+    public DishList<Drink> drinks;
+   /* public menu.DishList <menu.First> firsts;
+    public menu.DishList <menu.Second> seconds;
+    public menu.DishList sweets;*/
 
     private Menu  () {};
     private static Menu menu = new Menu ();
@@ -18,7 +18,7 @@ public class Menu {
 
     @Override
     public String toString () {
-        return    "Restaurant name: " + restaurantName
+        return    "restaurant.Restaurant name: " + restaurantName
                 + "\nType: " + type
                 + "\nDrinks: " +drinks.toString();
                 //+ "\nFirsts: " + seconds.toString()

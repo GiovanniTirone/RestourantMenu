@@ -1,5 +1,10 @@
+import menu.DishList;
+import menu.Drink;
+import menu.Menu;
+import restaurant.Restaurant;
+import user.User;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,11 +42,11 @@ public class Main {
 
 
        /*
-       Restaurant.tables[0].bookedDateTime = LocalDateTime.of(2022,10,12,12,00);
-       Restaurant.tables[1].bookedDateTime = LocalDateTime.of(2022,10,12,20,00);
-       Restaurant.tables[2].bookedDateTime = LocalDateTime.of(2022,10,15,11,30);
-       Restaurant.tables[3].bookedDateTime = LocalDateTime.of(2022,12,19,21,00);
-       Restaurant.tables[4].bookedDateTime = LocalDateTime.of(2022,11,20,23,22);
+       restaurant.Restaurant.tables[0].bookedDateTime = LocalDateTime.of(2022,10,12,12,00);
+       restaurant.Restaurant.tables[1].bookedDateTime = LocalDateTime.of(2022,10,12,20,00);
+       restaurant.Restaurant.tables[2].bookedDateTime = LocalDateTime.of(2022,10,15,11,30);
+       restaurant.Restaurant.tables[3].bookedDateTime = LocalDateTime.of(2022,12,19,21,00);
+       restaurant.Restaurant.tables[4].bookedDateTime = LocalDateTime.of(2022,11,20,23,22);
     */
 
        user1.bookTable(4, LocalDate.of(2022,10,15),LocalTime.of(13,00));
