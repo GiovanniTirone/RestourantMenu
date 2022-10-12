@@ -4,8 +4,8 @@ public class Menu {
     public String restaurantName = "Ristorante Team-1" ;
     public String type = "Vegano";
     public DishList <Drink> drinks;
-   /* public DishList <First> firsts;
-    public DishList <Second> seconds;
+    public DishList <First> firsts;
+    /* public DishList <Second> seconds;
     public DishList sweets;*/
 
     private Menu  () {};
@@ -20,8 +20,8 @@ public class Menu {
     public String toString () {
         return    "Restaurant name: " + restaurantName
                 + "\nType: " + type
-                + "\nDrinks: " +drinks.toString();
-                //+ "\nFirsts: " + seconds.toString()
+                + "\nDrinks: " +drinks.toString()
+                + "\nFirsts: " + firsts.toString();
                 //+ "\nSeconds: " + seconds.toString()
                 //+ "\nSweets: " + sweets.toString();
     }
