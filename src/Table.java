@@ -4,8 +4,6 @@ public class Table {
     int number;
     int seats;
 
-    TableBookings bookings;
-
 
     Table (int number, int seats){
         this.number = number;
@@ -17,6 +15,6 @@ public class Table {
         return "\nTable number: " + number + "\n  Seats: " + seats +"\n Bookings: " + bookings.toString();
     }
 
-
+    public LocalTime getTimeOfLunch
 
 }

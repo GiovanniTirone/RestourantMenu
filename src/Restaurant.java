@@ -1,7 +1,9 @@
+
+
 import java.time.*;
-import java.time.chrono.ChronoLocalDate;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Restaurant {
     public static Table tables [] ={  new Table(1,3),
@@ -13,10 +15,13 @@ public class Restaurant {
 
     public static int totalSeats;
 
+    public static List<DayBookings> calendar = new ArrayList<>();
+
     public static LocalTime lunchOpeningHour;
     public static LocalTime lunchClosureHour;
     public static LocalTime dinnerOpeningHour;
     public static LocalTime dinnerClosureHour;
+
 
     private static Restaurant restaurant = new Restaurant();
     public static Restaurant getRestaurant () {return restaurant;};
@@ -32,8 +37,23 @@ public class Restaurant {
         dinnerClosureHour = LocalTime.of(22,00);
     }
 
+    public static boolean timeIsInLunchRange (LocalTime time){
+        if(time.isAfter(lunchOpeningHour)&&time.isBefore(lunchClosureHour))return true;
+        else return false;
+    }
+
+    public static boolean timeIsInDinnerRange (LocalTime time){
+        if(time.isAfter(dinnerOpeningHour)&&time.isBefore(dinnerClosureHour))return true;
+        else return false;
+    }
+
+    public static boolean timeIsInOpeningRange (LocalTime time){
+        if(timeIsInDinnerRange(time)||timeIsInLunchRange(time))return true;
+        else return false;
+    }
+
     public static int checkFreeTable (int persons , LocalDate date, LocalTime hour) {
-        if(hour.isBefore((lunchOpeningHour))||(hour.isAfter(lunchClosureHour)&&hour.isBefore(dinnerOpeningHour))||hour.isAfter(dinnerClosureHour)){
+        if(!timeIsInOpeningRange(hour)){
             return -1;
         }
         LocalDateTime dateTime = date.atTime(hour);
@@ -48,10 +68,16 @@ public class Restaurant {
         return -1;
     }
 
-    public BookingsOfDay getBookingsOfDay (LocalDate date){
+    public DayBookings getBookingsOfDay (LocalDate date){
         for(Table table : tables){
             if(!table.bookings.isTableFreeAtDate(date)){
-
+                for(DayBookings book : calendar){
+                    if(book.date == date){
+                        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
+                        LocalDate time = LocalDate.parse(.format(formatter),formatter);
+                        if(table.bookings.)
+                    }
+                }
             }
         }
     }
@@ -70,7 +96,7 @@ public class Restaurant {
                     return -1;
                 }
                 else{
-                    return t1..compareTo(t2.bookedDateTime);
+                    return t1.compareTo(t2.bookedDateTime);
                 }
             }
         });
