@@ -17,4 +17,6 @@ public class Table {
         return "\nTable number: " + number + "\n  Seats: " + seats +"\n Bookings: " + bookings.toString();
     }
 
+
+
 }

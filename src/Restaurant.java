@@ -48,7 +48,13 @@ public class Restaurant {
         return -1;
     }
 
-    public 
+    public BookingsOfDay getBookingsOfDay (LocalDate date){
+        for(Table table : tables){
+            if(!table.bookings.isTableFreeAtDate(date)){
+
+            }
+        }
+    }
 
     /*
     public void orderTablesByDates () {
