@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calendar {
-        public List<LocalDate> bookingDates = new ArrayList<>();
+        public List<BookingsOfDay> bookings = new ArrayList<>();
+
+
+
 
 
 
