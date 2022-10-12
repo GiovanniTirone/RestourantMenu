@@ -11,7 +11,7 @@ public class Restaurant {
                         new Table(5,3)
                                                     };
 
-    public int totalSeats;
+    public static int totalSeats;
 
     public static LocalTime lunchOpeningHour;
     public static LocalTime lunchClosureHour;
@@ -38,21 +38,38 @@ public class Restaurant {
         }
         LocalDateTime dateTime = date.atTime(hour);
         for(Table table : tables){
-            if(!dateTime.isEqual(table.bookedDateTime) && persons<=table.seats){
+            if(table.bookings == null) {
+                return table.number;
+            }
+            else if(table.bookings.isTableFreeAtDateTime(dateTime) && persons<=table.seats){
                 return table.number;
             }
         }
         return -1;
     }
 
+    public 
+
+    /*
     public void orderTablesByDates () {
         Arrays.sort(tables, new Comparator<Table>() {
             public int compare(Table t1, Table t2) {
-                return t1.bookedDateTime.compareTo(t2.bookedDateTime);
+                if(t1.bookings==null && t2.bookings==null){
+                    return 0;
+                }
+                else if(t1.bookings==null) {
+                    return 1;
+                }
+                else if(t2.bookings==null) {
+                    return -1;
+                }
+                else{
+                    return t1..compareTo(t2.bookedDateTime);
+                }
             }
         });
     }
-
+    */
     /*
     public static boolean checkOldBooking (Table table){
         LocalDate currentDate = LocalDate.now();
