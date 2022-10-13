@@ -3,8 +3,11 @@ package calendar;
 import restaurant.Restaurant;
 import restaurant.Table;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Calendar {
@@ -73,8 +76,21 @@ public class Calendar {
         }
 
 
-
-
+        public void sortBookings () {
+                bookings.sort(new Comparator<DayBookings>() {
+                        @Override
+                        public int compare(DayBookings db1, DayBookings db2) {
+                                return db1.date.compareTo(db2.date);
+                        }
+                });
+        }
+        public JTable createTable ( ){
+                String col[] = {"","Date","Time","Name", "Number Table"};
+                DefaultTableModel tableModel = new DefaultTableModel(col, 0); // The 0 argument is number rows.
+                JTable table = new JTable(tableModel);
+                sortBookings();
+                for()
+        }
 
                 /*
         public String printBookingDates() {

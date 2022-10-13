@@ -22,12 +22,12 @@ public class MealBookings extends ArrayList <Prenotation> {
     }
 
     public JTable createTable (String meal) {
-        String col[] = {meal,"Date","Time","Name", "Number Table"};
+        String col[] = {"Meal","Date","Time","Name", "Number Table"};
         DefaultTableModel tableModel = new DefaultTableModel(col, 0); // The 0 argument is number rows.
         JTable table = new JTable(tableModel);
         sortBookings();
         for(Prenotation p : this){
-            tableModel.addRow(new Object[]{p.date,p.time,p.name,p.numberTable});
+            tableModel.addRow(new Object[]{meal,p.date,p.time,p.name,p.numberTable});
         }
         return table;
     }
