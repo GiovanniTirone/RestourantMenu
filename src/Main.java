@@ -9,21 +9,12 @@ public class Main {
         Menu menu = Menu.getMenu();
 
         //create the drinks:
-        Drink water = new Drink("Acqua");
-        Drink wine = new Drink ("Vino","Uva della Valtellina");
-        Drink beer = new Drink ("Birra",new ArrayList<>(Arrays.asList("Acqua","Malto d'Orzo","Luppolo","Lievito")));
-        Drink coffee = new Drink("Caffe'",new ArrayList<>(Arrays.asList("Acqua","Caffè")));
-        Drink the = new Drink("The",new ArrayList<>(Arrays.asList("Acqua","The")));
-        Drink orangeJuice = new Drink("Aranciata",new ArrayList<>(Arrays.asList("Arance","Acqua","Zucchero")));
-
-        //create the menu drinks List and add the drinks to it:
-        menu.drinks = new DishList<>();
-        menu.drinks.add(water);
-        menu.drinks.add(wine);
-        menu.drinks.add(beer);
-        menu.drinks.add(coffee);
-        menu.drinks.add(the);
-        menu.drinks.add(orangeJuice);
+        menu.addDrink("Acqua");
+        menu.addDrink("Vino","Uva della Valtellina");
+        menu.addDrink("Birra",new ArrayList<>(Arrays.asList("Acqua","Malto d'Orzo","Luppolo","Lievito")));
+        menu.addDrink("Caffe'",new ArrayList<>(Arrays.asList("Acqua","Caffè")));
+        menu.addDrink("The",new ArrayList<>(Arrays.asList("Acqua","The")));
+        menu.addDrink("Aranciata",new ArrayList<>(Arrays.asList("Arance","Acqua","Zucchero")));
 
 
         //create the First:

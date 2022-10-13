@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
@@ -8,13 +9,27 @@ public class Menu {
     /* public DishList <Second> seconds;
     public DishList sweets;*/
 
-    private Menu  () {};
+    private Menu  () {
+        this.drinks = new DishList<>();
+        this.firsts = new DishList<>();
+    };
     private static Menu menu = new Menu ();
 
     public static Menu getMenu() {
         return menu;
     }
 
+    public void addDrink (String name){
+        this.drinks.add(new Drink(name));
+    }
+
+    public void addDrink (String name,String ingredient){
+        this.drinks.add(new Drink(name,ingredient));
+    }
+
+    public void addDrink (String name,List<String>ingredients){
+        this.drinks.add(new Drink(name,ingredients));
+    }
 
     @Override
     public String toString () {
