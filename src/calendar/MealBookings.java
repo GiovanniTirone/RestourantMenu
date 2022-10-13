@@ -1,12 +1,15 @@
 package calendar;
 
 import restaurant.Restaurant;
+import restaurant.Table;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-public class LunchOrDinnerBookings extends ArrayList <Prenotation> {
+public class MealBookings extends ArrayList <Prenotation> {
+
+    public MealBookings () {};
     public void sortBookings () {
         this.sort(new Comparator<Prenotation>() {
             @Override
@@ -34,10 +37,9 @@ public class LunchOrDinnerBookings extends ArrayList <Prenotation> {
 
     public int getFreeTableAtTime (LocalTime time,int peopleNumber){
         Set<Integer> freeTables = getFreeTablesAtTime(time);
-        for(Prenotation prenotation : this){
-            int tableNum = prenotation.numberTable;
-            if(freeTables.contains(tableNum) && Restaurant.tables[tableNum].seats>=peopleNumber){
-                return tableNum;
+        for(Table table : Restaurant.tables){
+            if(freeTables.contains(table.number)&&table.seats>=peopleNumber){
+                return table.number;
             }
         }
         return -1;

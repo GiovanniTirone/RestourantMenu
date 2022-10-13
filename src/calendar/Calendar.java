@@ -31,15 +31,15 @@ public class Calendar {
                         if(!dayBookings.date.isEqual(date)) continue;
                         if(dayBookings.date.isEqual(date)) {
                                 if (Restaurant.timeIsInLunchRange(time)) {
-                                        int freeTable = dayBookings.lunchPrenotations.getFreeTableAtTime(time,peopleNumber);
+                                        int freeTable = dayBookings.lunchBookings.getFreeTableAtTime(time,peopleNumber);
                                         if (freeTable>0) {
                                                 return freeTable;
                                         }
                                 }
                                 if (Restaurant.timeIsInDinnerRange(time)) {
-                                        int possibleFreeTable = dayBookings.dinnerPrenotations.getFreeTableAtTime(time);
-                                        if (possibleFreeTable > 0 && Restaurant.getTableSeatsByNumberTable(possibleFreeTable) >= peopleNumber) {
-                                                return possibleFreeTable;
+                                        int freeTable = dayBookings.dinnerBookings.getFreeTableAtTime(time,peopleNumber);
+                                        if (freeTable>0) {
+                                                return freeTable;
                                         }
                                 }
                                 break;
