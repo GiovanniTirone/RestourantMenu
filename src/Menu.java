@@ -31,6 +31,11 @@ public class Menu {
         this.drinks.add(new Drink(name,ingredients));
     }
 
+
+    public void addFirst (String name,String ingredient){this.firsts.add(new First(name,ingredient));}
+
+    public void addFirst (String name,List<String>ingredients){this.firsts.add(new First(name,ingredients));}
+
     @Override
     public String toString () {
         return    "Restaurant name: " + restaurantName
