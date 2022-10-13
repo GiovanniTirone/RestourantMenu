@@ -31,9 +31,9 @@ public class Calendar {
                         if(!dayBookings.date.isEqual(date)) continue;
                         if(dayBookings.date.isEqual(date)) {
                                 if (Restaurant.timeIsInLunchRange(time)) {
-                                        int possibleFreeTable = dayBookings.lunchPrenotations.getFreeTableAtTime(time);
-                                        if (possibleFreeTable > 0 && Restaurant.getTableSeatsByNumberTable(possibleFreeTable) >= peopleNumber) {
-                                                return possibleFreeTable;
+                                        int freeTable = dayBookings.lunchPrenotations.getFreeTableAtTime(time,peopleNumber);
+                                        if (freeTable>0) {
+                                                return freeTable;
                                         }
                                 }
                                 if (Restaurant.timeIsInDinnerRange(time)) {

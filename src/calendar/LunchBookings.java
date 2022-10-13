@@ -7,9 +7,9 @@ import java.time.temporal.ChronoUnit;
 public class LunchBookings extends LunchOrDinnerBookings  {
 
     public LunchBookings ( ){ }
-    public int getFreeTableAtTime (LocalTime time){
+    public int getFreeTableAtTime (LocalTime time, int peopleNum){
         if(!Restaurant.timeIsInLunchRange(time)) return -1;
-        return super.getFreeTableAtTime(time);
+        return super.getFreeTableAtTime(time,peopleNum);
     }
 
 }

@@ -24,7 +24,7 @@ public class LunchOrDinnerBookings extends ArrayList <Prenotation> {
                 takenTables.add(prenotation.numberTable);
             }
         }
-        for(int i=1; i<Restaurant.tables.length; i++){
+        for(int i=1; i<=Restaurant.tables.length; i++){
             if(takenTables.contains(i)) continue;
             else freeTables.add(i);
         }
@@ -32,18 +32,12 @@ public class LunchOrDinnerBookings extends ArrayList <Prenotation> {
     }
 
 
-    public int getFreeTableAtTime (LocalTime time){
-
-
-
+    public int getFreeTableAtTime (LocalTime time,int peopleNumber){
+        Set<Integer> freeTables = getFreeTablesAtTime(time);
         for(Prenotation prenotation : this){
-            if(Math.abs(ChronoUnit.MINUTES.between(time, prenotation.time))>60){
-                if(this.stream().allMatch(prenotation1 ->
-                        prenotation1.numberTable == prenotation.numberTable
-                                && Math.abs(ChronoUnit.MINUTES.between(time, prenotation1.time))>60)){
-                    return prenotation.numberTable;
-                }
-
+            int tableNum = prenotation.numberTable;
+            if(freeTables.contains(tableNum) && Restaurant.tables[tableNum].seats>=peopleNumber){
+                return tableNum;
             }
         }
         return -1;
