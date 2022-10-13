@@ -1,5 +1,12 @@
-import com.sun.tools.jconsole.JConsoleContext;
+import calendar.Calendar;
+import menu.DishList;
+import menu.Drink;
+import menu.Menu;
+import restaurant.Restaurant;
+import user.User;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,24 +16,30 @@ public class Main {
         Menu menu = Menu.getMenu();
 
         //create the drinks:
-        Drink water = new Drink("Acqua");
-        Drink wine = new Drink ("Vino","Uva della Valtellina");
-        Drink beer = new Drink ("Birra",new ArrayList<>(Arrays.asList("Acqua","Malto d'Orzo","Luppolo","Lievito")));
-        Drink coffee = new Drink("Caffe'",new ArrayList<>(Arrays.asList("Acqua","Caffè")));
-        Drink the = new Drink("The",new ArrayList<>(Arrays.asList("Acqua","The")));
-        Drink orangeJuice = new Drink("Aranciata",new ArrayList<>(Arrays.asList("Arance","Acqua","Zucchero")));
-
-        //create the menu drinks List and add the drinks to it:
-        menu.drinks = new DishList<>();
-        menu.drinks.add(water);
-        menu.drinks.add(wine);
-        menu.drinks.add(beer);
-        menu.drinks.add(coffee);
-        menu.drinks.add(the);
-        menu.drinks.add(orangeJuice);
+        menu.addDrink("Acqua");
+        menu.addDrink("Vino","Uva della Valtellina");
+        menu.addDrink("Birra",new ArrayList<>(Arrays.asList("Acqua","Malto d'Orzo","Luppolo","Lievito")));
+        menu.addDrink("Caffe'",new ArrayList<>(Arrays.asList("Acqua","Caffè")));
+        menu.addDrink("The",new ArrayList<>(Arrays.asList("Acqua","The")));
+        menu.addDrink("Aranciata",new ArrayList<>(Arrays.asList("Arance","Acqua","Zucchero")));
 
         //print the men
         System.out.println(menu.toString());
 
+        //create restaurant and the calendar
+        Restaurant restaurant = Restaurant.getRestaurant();
+        Calendar calendar = Calendar.getCalendar();
+
+        //create some users
+        User user1 = new User("Giovanni");
+        User user2 = new User( "Fabio");
+        User user3 = new User("Francesco");
+        User user4 = new User("Pietro");
+
+        user1.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00));
+        user2.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00));
+
+
     }
+
 }

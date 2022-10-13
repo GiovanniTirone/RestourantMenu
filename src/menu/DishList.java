@@ -1,5 +1,8 @@
+package menu;
+
+import menu.Dish;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class DishList <T extends Dish> extends ArrayList <Dish> {
 
