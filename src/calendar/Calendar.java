@@ -28,7 +28,7 @@ public class Calendar {
                 }
 
                 for(DayBookings dayBookings : bookings){
-                        if(dayBookings.date != date) continue;
+                        if(!dayBookings.date.isEqual(date)) continue;
                         if(dayBookings.date.isEqual(date)) {
                                 if (Restaurant.timeIsInLunchRange(time)) {
                                         int possibleFreeTable = dayBookings.lunchPrenotations.getFreeTableAtTime(time);
@@ -56,20 +56,19 @@ public class Calendar {
                 return null;
         }
 
-        public static boolean bookTable (LocalDate date, LocalTime time, int peopleNumber, String name){
-                if(date.isBefore(LocalDate.now())) return false;
+        public static int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name){
+                if(date.isBefore(LocalDate.now())) return -1;
                 int freeTable = checkFreeTable(date,time,peopleNumber);
                 if(freeTable>0){
                         DayBookings dayBookings = searchDayBookings(date);
                         if(dayBookings!=null) {
                                 dayBookings.addPrenotation(freeTable,time,name);
-                                return true;
                         } else{
                                 bookings.add(new DayBookings(date,time,freeTable,name));
-                                return true;
                         }
+                        return freeTable;
                 } else {
-                        return false;
+                        return -1;
                 }
         }
 

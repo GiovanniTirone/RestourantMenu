@@ -36,7 +36,8 @@ public class Main {
         User user3 = new User("Francesco");
         User user4 = new User("Pietro");
 
-        System.out.println(user1.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00)));
+        user1.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00));
+        user2.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00));
 
 
     }

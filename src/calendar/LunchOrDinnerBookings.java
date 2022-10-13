@@ -4,9 +4,7 @@ import restaurant.Restaurant;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class LunchOrDinnerBookings extends ArrayList <Prenotation> {
     public void sortBookings () {
@@ -18,8 +16,25 @@ public class LunchOrDinnerBookings extends ArrayList <Prenotation> {
         });
     }
 
+    public Set<Integer> getFreeTablesAtTime (LocalTime time) {
+        Set<Integer> takenTables = new HashSet<>();
+        Set<Integer> freeTables = new HashSet<>();
+        for(Prenotation prenotation : this){
+            if(Math.abs(ChronoUnit.MINUTES.between(time, prenotation.time))<60){
+                takenTables.add(prenotation.numberTable);
+            }
+        }
+        for(int i=1; i<Restaurant.tables.length; i++){
+            if(takenTables.contains(i)) continue;
+            else freeTables.add(i);
+        }
+        return freeTables;
+    }
+
 
     public int getFreeTableAtTime (LocalTime time){
+
+
 
         for(Prenotation prenotation : this){
             if(Math.abs(ChronoUnit.MINUTES.between(time, prenotation.time))>60){

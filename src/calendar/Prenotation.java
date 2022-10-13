@@ -6,15 +6,16 @@ import java.time.LocalTime;
 
 public class Prenotation {
 
-    String name;
-    int numberTable;
-    LocalDate date;
-    LocalTime time;
+    public String name;
+    public int numberTable;
+    public LocalDate date;
+    public LocalTime time;
 
     public Prenotation (int numberTable, LocalDate date, LocalTime time, String name){
         this.numberTable = numberTable;
         this.date = date;
         this.time = time;
+        this.name =name;
     }
 
 }
