@@ -23,12 +23,31 @@ public class DayBookings {
         this.addPrenotation(tableNumber,time,name);
     }
 
-    public  void addPrenotation (int tableNumber , LocalTime time, String name) {
+    public void addPrenotation (int tableNumber , LocalTime time, String name) {
         if (Restaurant.timeIsInLunchRange(time)) {
             this.lunchBookings.add(new Prenotation(tableNumber,date,time,name));
         }else{
             this.dinnerBookings.add(new Prenotation(tableNumber,date,time,name));
         }
+    }
+
+    public boolean removePrenotation (int tableNumber, LocalTime time){
+        if(Restaurant.timeIsInLunchRange(time)){
+            for(Prenotation prenotation : this.lunchBookings){
+                if(prenotation.numberTable == tableNumber && prenotation.time==time){
+                    lunchBookings.remove(prenotation);
+                    return true;
+                }
+            }
+        }else {
+            for(Prenotation prenotation : this.dinnerBookings){
+                if(prenotation.numberTable == tableNumber && prenotation.time==time){
+                    dinnerBookings.remove(prenotation);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
