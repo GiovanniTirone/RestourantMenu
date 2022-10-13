@@ -17,18 +17,18 @@ public class DayBookings {
         this.dinnerPrenotations = new DinnerBookings();
     }
 
-    public DayBookings(LocalDate date ,LocalTime time ,int tableNumber){
+    public DayBookings(LocalDate date ,LocalTime time ,int tableNumber,String name){
         this.date = date;
         this.lunchPrenotations = new LunchBookings();
         this.dinnerPrenotations = new DinnerBookings();
-        this.addPrenotation(tableNumber,time);
+        this.addPrenotation(tableNumber,time,name);
     }
 
-    public  void addPrenotation (int tableNumber , LocalTime time) {
+    public  void addPrenotation (int tableNumber , LocalTime time, String name) {
         if (Restaurant.timeIsInLunchRange(time)) {
-            this.lunchPrenotations.add(new Prenotation(tableNumber,date,time));
+            this.lunchPrenotations.add(new Prenotation(tableNumber,date,time,name));
         }else{
-            this.dinnerPrenotations.add(new Prenotation(tableNumber,date,time));
+            this.dinnerPrenotations.add(new Prenotation(tableNumber,date,time,name));
         }
     }
 

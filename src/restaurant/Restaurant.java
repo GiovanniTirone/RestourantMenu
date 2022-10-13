@@ -8,36 +8,33 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Restaurant {
-    public static Table tables [] ={  new Table(1,3),
-                        new Table(2,4),
-                        new Table(3,4),
-                        new Table(4,6),
-                        new Table(5,3)
-                                                    };
+    public static Table tables [] = new Table []  { new Table(1, 3),
+                                                    new Table(2, 4),
+                                                    new Table(3, 4),
+                                                    new Table(4, 6),
+                                                    new Table(5, 3) };
 
     public static int totalSeats;
-
-    public static List<DayBookings> calendar = new ArrayList<>();
 
     public static LocalTime lunchOpeningHour;
     public static LocalTime lunchClosureHour;
     public static LocalTime dinnerOpeningHour;
     public static LocalTime dinnerClosureHour;
 
-
-    private static Restaurant restaurant = new Restaurant();
-    public static Restaurant getRestaurant () {return restaurant;};
-
-
     private Restaurant () {
         for(Table table : this.tables) {
             this.totalSeats += table.seats;
         }
+
         lunchOpeningHour = LocalTime.of(12,00);
         lunchClosureHour = LocalTime.of(14,00) ;
         dinnerOpeningHour = LocalTime.of(19,00);
         dinnerClosureHour = LocalTime.of(22,00);
     }
+
+    private static Restaurant restaurant = new Restaurant();
+    public static Restaurant getRestaurant () {return restaurant;};
+
 
     public static boolean timeIsInLunchRange (LocalTime time){
         if(time.isAfter(lunchOpeningHour)&&time.isBefore(lunchClosureHour))return true;
