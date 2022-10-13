@@ -3,6 +3,8 @@ package calendar;
 import restaurant.Restaurant;
 import restaurant.Table;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -17,6 +19,17 @@ public class MealBookings extends ArrayList <Prenotation> {
                 return p1.time.compareTo(p2.time);
             }
         });
+    }
+
+    public JTable createTable (String meal) {
+        String col[] = {meal,"Date","Time","Name", "Number Table"};
+        DefaultTableModel tableModel = new DefaultTableModel(col, 0); // The 0 argument is number rows.
+        JTable table = new JTable(tableModel);
+        sortBookings();
+        for(Prenotation p : this){
+            tableModel.addRow(new Object[]{p.date,p.time,p.name,p.numberTable});
+        }
+        return table;
     }
 
     public Set<Integer> getFreeTablesAtTime (LocalTime time) {

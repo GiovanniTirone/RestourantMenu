@@ -2,6 +2,7 @@ package calendar;
 
 import restaurant.Restaurant;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -48,6 +49,10 @@ public class DayBookings {
             }
         }
         return false;
+    }
+
+    public JTable createTable () {
+        for(let i)
     }
 
 }
