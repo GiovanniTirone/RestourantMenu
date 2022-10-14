@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
@@ -15,7 +14,7 @@ public class Menu {
     };
     private static Menu menu = new Menu ();
 
-    public static Menu getMenu() {
+    public static Menu getIstanceMenu() {
         return menu;
     }
 

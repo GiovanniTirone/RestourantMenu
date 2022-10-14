@@ -1,12 +1,10 @@
-import com.sun.tools.jconsole.JConsoleContext;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
         //create the menu:
-        Menu menu = Menu.getMenu();
+        Menu menu = Menu.getIstanceMenu();
 
         //create the drinks:
         menu.addDrink("Acqua");
