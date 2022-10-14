@@ -59,24 +59,26 @@ public class Restaurant {
     }
 
     public static int getTableForPeopleNumbers (int peopleNumber){
-        int minNumberSeats = peopleNumber;
-        int minNumberTable = -1;
+        int assignedTable =-1;
+        int assignedTableSeats = -1;
         for(Table t : tables){
             if(t.seats>=peopleNumber){
                 if(t.seats==peopleNumber) {
-                    minNumberTable = t.number;
+                    assignedTable = t.seats;
                     break;
                 }
-                if(t.seats<minNumberSeats){
-                    minNumberSeats = t.seats;
-                    minNumberTable = t.number;
+                if(t.seats<assignedTableSeats){
+                    assignedTable = t.number;
+                    assignedTableSeats = t.seats;
+                    continue;
+                }
+                if(assignedTable<0){
+                    assignedTable = t.number;
+                    assignedTableSeats = t.seats;
                 }
             }
-
-
-
         }
-        return minNumberTable;
+        return assignedTable;
     }
 
 

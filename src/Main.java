@@ -41,7 +41,7 @@ public class Main {
         user2.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00));
         user3.bookTable(2,LocalDate.of(2022,10,15),LocalTime.of(13,15));
         user4.bookTable(3,LocalDate.of(2022,10,16),LocalTime.of(13,50));
-        user2.bookTable(6,LocalDate.of(2022,10,12),LocalTime.of(12,15));
+        user2.bookTable(6,LocalDate.of(2022,10,16),LocalTime.of(12,15));
         user3.bookTable(3,LocalDate.of(2022,11,10),LocalTime.of(21,00));
         user1.bookTable(5,LocalDate.of(2022,11,11),LocalTime.of(20,00));
 
