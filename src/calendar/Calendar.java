@@ -2,6 +2,7 @@ package calendar;
 
 import restaurant.Restaurant;
 import restaurant.Table;
+import tables.MyTables;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,14 +25,13 @@ public class Calendar {
         public static int checkFreeTable (LocalDate date, LocalTime time, int peopleNumber) {
 
                 if(bookings.size() == 0) {
-                        for (Table table : Restaurant.tables){
-                                if(table.seats>=peopleNumber) return table.number;
-                        }
-                        return -1;
+                        return Restaurant.getTableForPeopleNumbers(peopleNumber);
                 }
 
                 for(DayBookings dayBookings : bookings){
-                        if(!dayBookings.date.isEqual(date)) continue;
+                        if(!dayBookings.date.isEqual(date)){
+                                return Restaurant.getTableForPeopleNumbers(peopleNumber);
+                        }
                         if(dayBookings.date.isEqual(date)) {
                                 if (Restaurant.timeIsInLunchRange(time)) {
                                         int freeTable = dayBookings.lunchBookings.getFreeTableAtTime(time,peopleNumber);
@@ -85,11 +85,21 @@ public class Calendar {
                 });
         }
         public JTable createTable ( ){
-                String col[] = {"","Date","Time","Name", "Number Table"};
+                String col[] = {"Meal","Date","Time","Name", "Number Table"};
                 DefaultTableModel tableModel = new DefaultTableModel(col, 0); // The 0 argument is number rows.
                 JTable table = new JTable(tableModel);
                 sortBookings();
-                for()
+                for(DayBookings db : bookings){
+                        table = MyTables.concat(table,db.createTable(),col);
+                }
+                return table;
+        }
+
+        public JTable createTableOfDate (LocalDate date) {
+                for(DayBookings db : bookings){
+                        if(db.date.isEqual(date)) return db.createTable();
+                }
+                return null;
         }
 
                 /*

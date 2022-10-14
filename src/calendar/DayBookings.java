@@ -9,9 +9,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class DayBookings {
-    LocalDate date;
-    MealBookings lunchBookings;
-    MealBookings dinnerBookings;
+    public LocalDate date;
+    public MealBookings lunchBookings;
+    public MealBookings dinnerBookings;
 
     public DayBookings (LocalDate date){
         this.date = date;

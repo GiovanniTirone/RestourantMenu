@@ -58,5 +58,22 @@ public class Restaurant {
         return -1;
     }
 
+    public static int getTableForPeopleNumbers (int peopleNumber){
+        int minNumberSeats = peopleNumber;
+        int minNumberTable = -1;
+        for(Table t : tables){
+            if(t.seats==peopleNumber) {
+                minNumberTable = t.number;
+                break;
+            }else if(t.seats<peopleNumber){
+                continue;
+            }else if(t.seats<minNumberSeats){
+                minNumberSeats = t.seats;
+                minNumberTable = t.number;
+            }
+        }
+        return minNumberTable;
+    }
+
 
 }
