@@ -22,20 +22,20 @@ public class Calendar {
         public static Calendar getCalendar ( ) {return calendar;}
 
         //Returns the number of a free table, if it doesn't exist returns a negative number
-        public int checkFreeTable (LocalDate date, LocalTime time, int peopleNumber, String lunchOrDinner) {
+        public int checkFreeTable (LocalDate date, LocalTime time, int peopleNumber, String lunchOrDinner ,Restaurant restaurant) {
 
                 if(bookings.size() == 0) {
-                        return Restaurant.getTableFromAllTables(peopleNumber);
+                        return restaurant.getTableFromAllTables(peopleNumber);
                 }
 
                 DayBookings targetDayBooking = searchDayBookings(date);
 
                 if(targetDayBooking == null) {
-                        return Restaurant.getTableFromAllTables(peopleNumber);}
+                        return restaurant.getTableFromAllTables(peopleNumber);}
                 else{
                         return lunchOrDinner.equals("lunch") ?
-                                targetDayBooking.lunchBookings.getFreeTableAtTime(time, peopleNumber) :
-                                targetDayBooking.dinnerBookings.getFreeTableAtTime(time, peopleNumber);
+                                targetDayBooking.lunchBookings.getFreeTableAtTime(time, peopleNumber,restaurant) :
+                                targetDayBooking.dinnerBookings.getFreeTableAtTime(time, peopleNumber,restaurant);
                 }
         }
 
@@ -47,11 +47,11 @@ public class Calendar {
                 return null;
         }
 
-        public  int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name, TimeTable timetable){
+        public  int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name, TimeTable timetable, Restaurant restaurant){
                 if(date.isBefore(LocalDate.now())) return -1;
                 String lunchOrDinner = timetable.timeIsInLunchOrDinnerRange(time);
                 if(lunchOrDinner.equals("no")) return -2;
-                int freeTable = checkFreeTable(date,time,peopleNumber,lunchOrDinner);
+                int freeTable = checkFreeTable(date,time,peopleNumber,lunchOrDinner,restaurant);
                 if(freeTable>0){
                         DayBookings dayBookings = searchDayBookings(date);
                         if(dayBookings!=null) {

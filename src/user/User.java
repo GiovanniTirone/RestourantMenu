@@ -1,6 +1,7 @@
 package user;
 
 import calendar.Calendar;
+import restaurant.Restaurant;
 import restaurant.TimeTable;
 
 import java.time.LocalDate;
@@ -19,9 +20,9 @@ public class User {
     }
 
 
-    public boolean bookTable (int persons, LocalDate date, LocalTime time,Calendar calendar, TimeTable timeTable) {
+    public boolean bookTable (int persons, LocalDate date, LocalTime time, Calendar calendar, TimeTable timeTable , Restaurant restaurant) {
 
-            int bookTable = calendar.bookTable(date, time, persons,this.name, timeTable);
+            int bookTable = calendar.bookTable(date, time, persons,this.name, timeTable,restaurant);
             if(bookTable>0) { System.out.println("La prenotazione per " + name + " e' stata effettuata con successo, al tavolo"
                                     +" numero " + bookTable +", il giorno "+ date + " alle ore " + time);
                               return true;

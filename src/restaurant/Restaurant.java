@@ -6,13 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Restaurant {
-    public static Table tables [] = new Table []  { new Table(1, 3),
+    public  Table tables [] = new Table []  { new Table(1, 3),
                                                     new Table(2, 4),
                                                     new Table(3, 4),
                                                     new Table(4, 6),
                                                     new Table(5, 3) };
 
-    public static int totalSeats;
+    public  int totalSeats;
 
 
     private Restaurant () {
@@ -26,14 +26,14 @@ public class Restaurant {
     public static Restaurant getRestaurant () {return restaurant;};
 
 
-    public static int getTableSeatsByNumberTable (int number){
+    public  int getTableSeatsByNumberTable (int number){
         for(Table table : tables){
             if(table.number == number) return table.seats;
         }
         return -1;
     }
 
-    public static int getTableFromFreeTables(int peopleNumber, Set<Integer>freeTablesNumbers){
+    public  int getTableFromFreeTables(int peopleNumber, Set<Integer>freeTablesNumbers){
         int assignedTable =-1;
         int assignedTableSeats = -1;
         for(Table t : tables){
@@ -58,7 +58,7 @@ public class Restaurant {
         return assignedTable;
     }
 
-    public static int getTableFromAllTables (int peopleNumber) {
+    public  int getTableFromAllTables (int peopleNumber) {
         Set<Integer>tablesNumbers = new HashSet<>();
         Arrays.stream(tables).forEach(t -> tablesNumbers.add(t.number));
         return getTableFromFreeTables(peopleNumber,tablesNumbers);

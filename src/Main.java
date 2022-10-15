@@ -56,7 +56,7 @@ public class Main {
     }
 
     public static boolean bookTable (User user,int persons,int day,int month,int year,int hour,int min){
-        return user.bookTable(persons,LocalDate.of(year,month,day),LocalTime.of(hour,min),calendar,ordinaryTimeTable);
+        return user.bookTable(persons,LocalDate.of(year,month,day),LocalTime.of(hour,min),calendar,ordinaryTimeTable,restaurant);
     }
 
 

@@ -31,7 +31,7 @@ public class MealBookings extends ArrayList <Prenotation> {
         return table;
     }
 
-    public Set<Integer> getFreeTablesAtTime (LocalTime time) {
+    public Set<Integer> getFreeTablesAtTime (LocalTime time, Restaurant restaurant) {
         Set<Integer> takenTables = new HashSet<>();
         Set<Integer> freeTables = new HashSet<>();
         for(Prenotation prenotation : this){
@@ -39,7 +39,7 @@ public class MealBookings extends ArrayList <Prenotation> {
                 takenTables.add(prenotation.numberTable);
             }
         }
-        for(int i=1; i<=Restaurant.tables.length; i++){
+        for(int i=1; i<=restaurant.tables.length; i++){
             if(takenTables.contains(i)) continue;
             else freeTables.add(i);
         }
@@ -47,8 +47,8 @@ public class MealBookings extends ArrayList <Prenotation> {
     }
 
 
-    public int getFreeTableAtTime (LocalTime time,int peopleNumber){
-        Set<Integer> freeTables = getFreeTablesAtTime(time);
-        return Restaurant.getTableFromFreeTables(peopleNumber,freeTables);
+    public int getFreeTableAtTime (LocalTime time,int peopleNumber, Restaurant restaurant){
+        Set<Integer> freeTables = getFreeTablesAtTime(time,restaurant);
+        return restaurant.getTableFromFreeTables(peopleNumber,freeTables);
     }
 }
