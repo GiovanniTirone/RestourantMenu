@@ -17,12 +17,16 @@ public class User {
     }
 
 
-    public void bookTable (int persons, LocalDate date, LocalTime time,Calendar calendar) {
+    public boolean bookTable (int persons, LocalDate date, LocalTime time,Calendar calendar) {
 
             int bookTable = calendar.bookTable(date, time, persons,this.name);
-            if(bookTable>0) System.out.println("La prenotazione per " + name + " e' stata effettuata con successo, al tavolo"
+            if(bookTable>0) { System.out.println("La prenotazione per " + name + " e' stata effettuata con successo, al tavolo"
                                     +" numero " + bookTable +", il giorno "+ date + " alle ore " + time);
-            else System.out.println("Non è stato possibile effettuare la prenotazione");
+                              return true;
+            } else {
+                System.out.println("Non è stato possibile effettuare la prenotazione");
+                return false;
+            }
 
     }
 

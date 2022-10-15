@@ -12,9 +12,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
+    //create the menu:
+    static Menu menu = Menu.getMenu();
+
+    //create restaurant and the calendar
+    static Restaurant restaurant = Restaurant.getRestaurant();
+    static Calendar calendar = Calendar.getCalendar();
+
     public static void main(String[] args) {
-        //create the menu:
-        Menu menu = Menu.getMenu();
+
 
         //create the drinks:
         menu.addDrink("Acqua");
@@ -24,12 +30,8 @@ public class Main {
         menu.addDrink("The",new ArrayList<>(Arrays.asList("Acqua","The")));
         menu.addDrink("Aranciata",new ArrayList<>(Arrays.asList("Arance","Acqua","Zucchero")));
 
-        //print the men
+        //print the menu
         System.out.println(menu.toString());
-
-        //create restaurant and the calendar
-        Restaurant restaurant = Restaurant.getRestaurant();
-        Calendar calendar = Calendar.getCalendar();
 
         //create some users
         User user1 = new User("Giovanni");
@@ -37,17 +39,23 @@ public class Main {
         User user3 = new User("Francesco");
         User user4 = new User("Pietro");
 
-        user1.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00),calendar);
-        user2.bookTable(4,LocalDate.of(2022,10,15),LocalTime.of(20,00),calendar);
-        user3.bookTable(2,LocalDate.of(2022,10,15),LocalTime.of(13,15),calendar);
-        user4.bookTable(3,LocalDate.of(2022,10,16),LocalTime.of(13,50),calendar);
-        user2.bookTable(6,LocalDate.of(2022,10,16),LocalTime.of(12,15),calendar);
-        user3.bookTable(3,LocalDate.of(2022,11,10),LocalTime.of(21,00),calendar);
-        user1.bookTable(5,LocalDate.of(2022,11,11),LocalTime.of(20,00),calendar);
+
+        bookTable(user1,4,15,10,2022,20,00);
+        bookTable(user2,4,15,10,2022,20,00);
+        bookTable(user3,2,15,10,2022,13,15);
+        bookTable(user4,3,16,10,2022,13,50);
+        bookTable(user2,6,16,10,2022,12,15);
+        bookTable(user3,3,10,11,2022,21,00);
+        bookTable(user1,5,11,11,2022,20,00);
+
 
         MyTables.visualizeTable(calendar.createTable());
         //MyTables.visualizeTable(calendar.createTableOfDate(LocalDate.of(2022,10,15)));
         //MyTables.visualizeTable(Calendar.searchDayBookings(LocalDate.of(2022,10,15)).dinnerBookings.createTable("DINNER"));
+    }
+
+    public static boolean bookTable (User user,int persons,int day,int month,int year,int hour,int min){
+        return user.bookTable(persons,LocalDate.of(year,month,day),LocalTime.of(hour,min),calendar);
     }
 
 

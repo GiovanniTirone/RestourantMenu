@@ -70,12 +70,12 @@ public class Calendar {
                 return false;
         }
 
-        public static void removeAllBookingsBefore (LocalDate date, Calendar calendar) {
-                calendar.bookings.stream().filter(db -> !db.date.isBefore(date));
+        public void removeAllBookingsBefore (LocalDate date) {
+                bookings.stream().filter(db -> !db.date.isBefore(date));
         }
 
-        public static void removeOldBookings(Calendar calendar){
-                removeAllBookingsBefore(LocalDate.now(),calendar);
+        public  void removeOldBookings(){
+                removeAllBookingsBefore(LocalDate.now());
         }
 
         public void sortBookings () {
