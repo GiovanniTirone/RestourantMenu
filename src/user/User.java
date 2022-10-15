@@ -1,9 +1,6 @@
 package user;
 
 import calendar.Calendar;
-import org.xml.sax.helpers.AttributesImpl;
-import restaurant.Restaurant;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 

@@ -75,6 +75,19 @@ public class Calendar {
                 }
         }
 
+        public static boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber) {
+                DayBookings db = searchDayBookings(date);
+                if(db != null) return db.removePrenotation(tableNumber,time);
+                return false;
+        }
+
+        public static void removeAllBookingsBefore (LocalDate date) {
+                bookings.stream().filter(db -> !db.date.isBefore(date));
+        }
+
+        public static void removeOldBookings(){
+                removeAllBookingsBefore(LocalDate.now());
+        }
 
         public void sortBookings () {
                 bookings.sort(new Comparator<DayBookings>() {
