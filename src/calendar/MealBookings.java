@@ -1,7 +1,6 @@
 package calendar;
 
 import restaurant.Restaurant;
-import restaurant.Table;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -50,11 +49,6 @@ public class MealBookings extends ArrayList <Prenotation> {
 
     public int getFreeTableAtTime (LocalTime time,int peopleNumber){
         Set<Integer> freeTables = getFreeTablesAtTime(time);
-        for(Table table : Restaurant.tables){
-            if(freeTables.contains(table.number)&&table.seats>=peopleNumber){
-                return table.number;
-            }
-        }
-        return -1;
+        return Restaurant.getTableFromFreeTables(peopleNumber,freeTables);
     }
 }

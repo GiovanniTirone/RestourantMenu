@@ -1,11 +1,9 @@
 package restaurant;
 
-import calendar.DayBookings;
-
 import java.time.*;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Restaurant {
     public static Table tables [] = new Table []  { new Table(1, 3),
@@ -51,6 +49,12 @@ public class Restaurant {
         else return false;
     }
 
+    public static String timeIsInLunchOrDinnerRange (LocalTime time){
+        if(Restaurant.timeIsInLunchRange(time)) return "lunch";
+        if(Restaurant.timeIsInDinnerRange(time)) return "dinner";
+        else return "no";
+    }
+
     public static int getTableSeatsByNumberTable (int number){
         for(Table table : tables){
             if(table.number == number) return table.seats;
@@ -58,28 +62,35 @@ public class Restaurant {
         return -1;
     }
 
-    public static int getTableForPeopleNumbers (int peopleNumber){
+    public static int getTableFromFreeTables(int peopleNumber, Set<Integer>freeTablesNumbers){
         int assignedTable =-1;
         int assignedTableSeats = -1;
         for(Table t : tables){
-            if(t.seats>=peopleNumber){
-                if(t.seats==peopleNumber) {
-                    assignedTable = t.seats;
-                    break;
-                }
-                if(t.seats<assignedTableSeats){
-                    assignedTable = t.number;
-                    assignedTableSeats = t.seats;
-                    continue;
-                }
-                if(assignedTable<0){
-                    assignedTable = t.number;
-                    assignedTableSeats = t.seats;
+            if(freeTablesNumbers.contains(t.number)) {
+                if (t.seats >= peopleNumber) {
+                    if (t.seats == peopleNumber) {
+                        assignedTable = t.seats;
+                        break;
+                    }
+                    if (t.seats < assignedTableSeats) {
+                        assignedTable = t.number;
+                        assignedTableSeats = t.seats;
+                        continue;
+                    }
+                    if (assignedTable < 0) {
+                        assignedTable = t.number;
+                        assignedTableSeats = t.seats;
+                    }
                 }
             }
         }
         return assignedTable;
     }
 
+    public static int getTableFromAllTables (int peopleNumber) {
+        Set<Integer>tablesNumbers = new HashSet<>();
+        Arrays.stream(tables).forEach(t -> tablesNumbers.add(t.number));
+        return getTableFromFreeTables(peopleNumber,tablesNumbers);
+    }
 
 }

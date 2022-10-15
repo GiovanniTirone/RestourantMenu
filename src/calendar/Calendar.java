@@ -1,7 +1,6 @@
 package calendar;
 
 import restaurant.Restaurant;
-import restaurant.Table;
 import tables.MyTables;
 
 import javax.swing.*;
@@ -22,52 +21,42 @@ public class Calendar {
         public static Calendar getCalendar ( ) {return calendar;}
 
         //Returns the number of a free table, if it doesn't exist returns a negative number
-        public static int checkFreeTable (LocalDate date, LocalTime time, int peopleNumber, Calendar calendar) {
+        public int checkFreeTable (LocalDate date, LocalTime time, int peopleNumber, String lunchOrDinner) {
 
-                if(calendar.bookings.size() == 0) {
-                        return Restaurant.getTableForPeopleNumbers(peopleNumber);
+                if(bookings.size() == 0) {
+                        return Restaurant.getTableFromAllTables(peopleNumber);
                 }
 
-                for(DayBookings dayBookings : calendar.bookings){
-                        if(!dayBookings.date.isEqual(date)){
-                                return Restaurant.getTableForPeopleNumbers(peopleNumber);
-                        }
-                        if(dayBookings.date.isEqual(date)) {
-                                if (Restaurant.timeIsInLunchRange(time)) {
-                                        int freeTable = dayBookings.lunchBookings.getFreeTableAtTime(time,peopleNumber);
-                                        if (freeTable>0) {
-                                                return freeTable;
-                                        }
-                                }
-                                if (Restaurant.timeIsInDinnerRange(time)) {
-                                        int freeTable = dayBookings.dinnerBookings.getFreeTableAtTime(time,peopleNumber);
-                                        if (freeTable>0) {
-                                                return freeTable;
-                                        }
-                                }
-                                break;
-                        }
+                DayBookings targetDayBooking = searchDayBookings(date);
+
+                if(targetDayBooking == null) {
+                        return Restaurant.getTableFromAllTables(peopleNumber);}
+                else{
+                        return lunchOrDinner.equals("lunch") ?
+                                targetDayBooking.lunchBookings.getFreeTableAtTime(time, peopleNumber) :
+                                targetDayBooking.dinnerBookings.getFreeTableAtTime(time, peopleNumber);
                 }
-                return -1;
         }
 
 
-        public static DayBookings searchDayBookings (LocalDate date, Calendar calendar) {
-                for(DayBookings dayBookings : calendar.bookings){
+        public DayBookings searchDayBookings (LocalDate date) {
+                for(DayBookings dayBookings : bookings){
                         if(dayBookings.date.isEqual(date)) return dayBookings;
                 }
                 return null;
         }
 
-        public static int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name,Calendar calendar){
+        public  int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name){
                 if(date.isBefore(LocalDate.now())) return -1;
-                int freeTable = checkFreeTable(date,time,peopleNumber,calendar);
+                String lunchOrDinner = Restaurant.timeIsInLunchOrDinnerRange(time);
+                if(lunchOrDinner.equals("no")) return -2;
+                int freeTable = checkFreeTable(date,time,peopleNumber,lunchOrDinner);
                 if(freeTable>0){
-                        DayBookings dayBookings = searchDayBookings(date,calendar);
+                        DayBookings dayBookings = searchDayBookings(date);
                         if(dayBookings!=null) {
                                 dayBookings.addPrenotation(freeTable,time,name);
                         } else{
-                                calendar.bookings.add(new DayBookings(date,time,freeTable,name));
+                                bookings.add(new DayBookings(date,time,freeTable,name));
                         }
                         return freeTable;
                 } else {
@@ -75,8 +64,8 @@ public class Calendar {
                 }
         }
 
-        public static boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber, Calendar calendar) {
-                DayBookings db = searchDayBookings(date,calendar);
+        public  boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber) {
+                DayBookings db = searchDayBookings(date);
                 if(db != null) return db.removePrenotation(tableNumber,time);
                 return false;
         }
