@@ -17,9 +17,9 @@ public class User {
     }
 
 
-    public void bookTable (int persons, LocalDate date, LocalTime time) {
+    public void bookTable (int persons, LocalDate date, LocalTime time,Calendar calendar) {
 
-            int bookTable = Calendar.bookTable(date, time, persons,this.name );
+            int bookTable = Calendar.bookTable(date, time, persons,this.name, calendar );
             if(bookTable>0) System.out.println("La prenotazione per " + name + " e' stata effettuata con successo, al tavolo"
                                     +" numero " + bookTable +", il giorno "+ date + " alle ore " + time);
             else System.out.println("Non è stato possibile effettuare la prenotazione");

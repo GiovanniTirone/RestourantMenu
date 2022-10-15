@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Calendar {
-        public static List<DayBookings> bookings;
+        public  List<DayBookings> bookings;
 
         private Calendar () {
               this.bookings =  new ArrayList<DayBookings>();
@@ -22,13 +22,13 @@ public class Calendar {
         public static Calendar getCalendar ( ) {return calendar;}
 
         //Returns the number of a free table, if it doesn't exist returns a negative number
-        public static int checkFreeTable (LocalDate date, LocalTime time, int peopleNumber) {
+        public static int checkFreeTable (LocalDate date, LocalTime time, int peopleNumber, Calendar calendar) {
 
-                if(bookings.size() == 0) {
+                if(calendar.bookings.size() == 0) {
                         return Restaurant.getTableForPeopleNumbers(peopleNumber);
                 }
 
-                for(DayBookings dayBookings : bookings){
+                for(DayBookings dayBookings : calendar.bookings){
                         if(!dayBookings.date.isEqual(date)){
                                 return Restaurant.getTableForPeopleNumbers(peopleNumber);
                         }
@@ -52,22 +52,22 @@ public class Calendar {
         }
 
 
-        public static DayBookings searchDayBookings (LocalDate date) {
-                for(DayBookings dayBookings : bookings){
+        public static DayBookings searchDayBookings (LocalDate date, Calendar calendar) {
+                for(DayBookings dayBookings : calendar.bookings){
                         if(dayBookings.date.isEqual(date)) return dayBookings;
                 }
                 return null;
         }
 
-        public static int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name){
+        public static int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name,Calendar calendar){
                 if(date.isBefore(LocalDate.now())) return -1;
-                int freeTable = checkFreeTable(date,time,peopleNumber);
+                int freeTable = checkFreeTable(date,time,peopleNumber,calendar);
                 if(freeTable>0){
-                        DayBookings dayBookings = searchDayBookings(date);
+                        DayBookings dayBookings = searchDayBookings(date,calendar);
                         if(dayBookings!=null) {
                                 dayBookings.addPrenotation(freeTable,time,name);
                         } else{
-                                bookings.add(new DayBookings(date,time,freeTable,name));
+                                calendar.bookings.add(new DayBookings(date,time,freeTable,name));
                         }
                         return freeTable;
                 } else {
@@ -75,18 +75,18 @@ public class Calendar {
                 }
         }
 
-        public static boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber) {
-                DayBookings db = searchDayBookings(date);
+        public static boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber, Calendar calendar) {
+                DayBookings db = searchDayBookings(date,calendar);
                 if(db != null) return db.removePrenotation(tableNumber,time);
                 return false;
         }
 
-        public static void removeAllBookingsBefore (LocalDate date) {
-                bookings.stream().filter(db -> !db.date.isBefore(date));
+        public static void removeAllBookingsBefore (LocalDate date, Calendar calendar) {
+                calendar.bookings.stream().filter(db -> !db.date.isBefore(date));
         }
 
-        public static void removeOldBookings(){
-                removeAllBookingsBefore(LocalDate.now());
+        public static void removeOldBookings(Calendar calendar){
+                removeAllBookingsBefore(LocalDate.now(),calendar);
         }
 
         public void sortBookings () {
@@ -97,7 +97,7 @@ public class Calendar {
                         }
                 });
         }
-        public JTable createTable ( ){
+        public JTable createTable (){
                 String col[] = {"Meal","Date","Time","Name", "Number Table"};
                 DefaultTableModel tableModel = new DefaultTableModel(col, 0); // The 0 argument is number rows.
                 JTable table = new JTable(tableModel);
