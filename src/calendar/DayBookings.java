@@ -1,6 +1,7 @@
 package calendar;
 
 import restaurant.Restaurant;
+import restaurant.TimeTable;
 import tables.MyTables;
 
 import javax.swing.*;
@@ -19,23 +20,23 @@ public class DayBookings {
         this.dinnerBookings = new MealBookings();
     }
 
-    public DayBookings(LocalDate date ,LocalTime time ,int tableNumber,String name){
+    public DayBookings(LocalDate date ,LocalTime time ,int tableNumber,String name,TimeTable timeTable){
         this.date = date;
         this.lunchBookings = new MealBookings();
         this.dinnerBookings = new MealBookings();
-        this.addPrenotation(tableNumber,time,name);
+        this.addPrenotation(tableNumber,time,name,timeTable);
     }
 
-    public void addPrenotation (int tableNumber , LocalTime time, String name) {
-        if (Restaurant.timeIsInLunchRange(time)) {
+    public void addPrenotation (int tableNumber , LocalTime time, String name, TimeTable timeTable) {
+        if (timeTable.timeIsInLunchRange(time)) {
             this.lunchBookings.add(new Prenotation(tableNumber,date,time,name));
         }else{
             this.dinnerBookings.add(new Prenotation(tableNumber,date,time,name));
         }
     }
 
-    public boolean removePrenotation (int tableNumber, LocalTime time){
-        if(Restaurant.timeIsInLunchRange(time)){
+    public boolean removePrenotation (int tableNumber, LocalTime time, TimeTable timeTable){
+        if(timeTable.timeIsInLunchRange(time)){
             for(Prenotation prenotation : this.lunchBookings){
                 if(prenotation.numberTable == tableNumber && prenotation.time==time){
                     lunchBookings.remove(prenotation);

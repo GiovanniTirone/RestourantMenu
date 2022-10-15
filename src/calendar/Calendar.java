@@ -1,6 +1,7 @@
 package calendar;
 
 import restaurant.Restaurant;
+import restaurant.TimeTable;
 import tables.MyTables;
 
 import javax.swing.*;
@@ -46,17 +47,17 @@ public class Calendar {
                 return null;
         }
 
-        public  int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name){
+        public  int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name, TimeTable timetable){
                 if(date.isBefore(LocalDate.now())) return -1;
-                String lunchOrDinner = Restaurant.timeIsInLunchOrDinnerRange(time);
+                String lunchOrDinner = timetable.timeIsInLunchOrDinnerRange(time);
                 if(lunchOrDinner.equals("no")) return -2;
                 int freeTable = checkFreeTable(date,time,peopleNumber,lunchOrDinner);
                 if(freeTable>0){
                         DayBookings dayBookings = searchDayBookings(date);
                         if(dayBookings!=null) {
-                                dayBookings.addPrenotation(freeTable,time,name);
+                                dayBookings.addPrenotation(freeTable,time,name,timetable);
                         } else{
-                                bookings.add(new DayBookings(date,time,freeTable,name));
+                                bookings.add(new DayBookings(date,time,freeTable,name,timetable));
                         }
                         return freeTable;
                 } else {
@@ -64,9 +65,9 @@ public class Calendar {
                 }
         }
 
-        public  boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber) {
+        public  boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber,TimeTable timeTable) {
                 DayBookings db = searchDayBookings(date);
-                if(db != null) return db.removePrenotation(tableNumber,time);
+                if(db != null) return db.removePrenotation(tableNumber,time,timeTable);
                 return false;
         }
 

@@ -1,8 +1,7 @@
 import calendar.Calendar;
-import menu.DishList;
-import menu.Drink;
 import menu.Menu;
 import restaurant.Restaurant;
+import restaurant.TimeTable;
 import tables.MyTables;
 import user.User;
 
@@ -18,6 +17,8 @@ public class Main {
     //create restaurant and the calendar
     static Restaurant restaurant = Restaurant.getRestaurant();
     static Calendar calendar = Calendar.getCalendar();
+
+    static TimeTable ordinaryTimeTable = new TimeTable ();
 
     public static void main(String[] args) {
 
@@ -55,7 +56,7 @@ public class Main {
     }
 
     public static boolean bookTable (User user,int persons,int day,int month,int year,int hour,int min){
-        return user.bookTable(persons,LocalDate.of(year,month,day),LocalTime.of(hour,min),calendar);
+        return user.bookTable(persons,LocalDate.of(year,month,day),LocalTime.of(hour,min),calendar,ordinaryTimeTable);
     }
 
 

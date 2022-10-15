@@ -14,46 +14,17 @@ public class Restaurant {
 
     public static int totalSeats;
 
-    public static LocalTime lunchOpeningHour;
-    public static LocalTime lunchClosureHour;
-    public static LocalTime dinnerOpeningHour;
-    public static LocalTime dinnerClosureHour;
 
     private Restaurant () {
         for(Table table : this.tables) {
             this.totalSeats += table.seats;
         }
 
-        lunchOpeningHour = LocalTime.of(12,00);
-        lunchClosureHour = LocalTime.of(14,00) ;
-        dinnerOpeningHour = LocalTime.of(19,00);
-        dinnerClosureHour = LocalTime.of(22,00);
     }
 
     private static Restaurant restaurant = new Restaurant();
     public static Restaurant getRestaurant () {return restaurant;};
 
-
-    public static boolean timeIsInLunchRange (LocalTime time){
-        if(time.isAfter(lunchOpeningHour)&&time.isBefore(lunchClosureHour))return true;
-        else return false;
-    }
-
-    public static boolean timeIsInDinnerRange (LocalTime time){
-        if(time.isAfter(dinnerOpeningHour)&&time.isBefore(dinnerClosureHour))return true;
-        else return false;
-    }
-
-    public static boolean timeIsInOpeningRange (LocalTime time){
-        if(timeIsInDinnerRange(time)||timeIsInLunchRange(time))return true;
-        else return false;
-    }
-
-    public static String timeIsInLunchOrDinnerRange (LocalTime time){
-        if(Restaurant.timeIsInLunchRange(time)) return "lunch";
-        if(Restaurant.timeIsInDinnerRange(time)) return "dinner";
-        else return "no";
-    }
 
     public static int getTableSeatsByNumberTable (int number){
         for(Table table : tables){
