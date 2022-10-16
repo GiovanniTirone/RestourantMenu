@@ -7,7 +7,7 @@ public class DishList <T extends Dish> extends ArrayList <Dish> {
     public String toString () {
         String str = "";
         for(Dish dish : this) {
-            str += "\n  " + dish.toString();
+            str += "\n" + dish.toString();
         };
         return str;
     }
