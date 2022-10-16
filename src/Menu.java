@@ -6,12 +6,15 @@ public class Menu {
     public String type = "Vegano";
     public DishList <Drink> drinks;
     public DishList <First> firsts;
-    /* public DishList <Second> seconds;
-    public DishList sweets;*/
+
+    //public DishList <Second> seconds;
+
+    public DishList<Sweet> sweets;
 
     private Menu  () {
         this.drinks = new DishList<>();
         this.firsts = new DishList<>();
+        this.sweets = new DishList<>();
     };
     private static Menu menu = new Menu ();
 
@@ -36,13 +39,25 @@ public class Menu {
 
     public void addFirst (String name,List<String>ingredients){this.firsts.add(new First(name,ingredients));}
 
+    public void addSweet (String name){
+        this.sweets.add(new Sweet(name));
+    }
+
+    public void addSweet (String name, String ingredient){
+        this.sweets.add(new Sweet(name, ingredient));
+    }
+
+    public void addSweet (String name, List<String>ingredients){
+        this.sweets.add(new Sweet(name, ingredients));
+    }
+
     @Override
     public String toString () {
         return    "Restaurant name: " + restaurantName
                 + "\nType: " + type
                 + "\nDrinks: " +drinks.toString()
-                + "\nFirsts: " + firsts.toString();
+                + "\nFirsts: " + firsts.toString()
                 //+ "\nSeconds: " + seconds.toString()
-                //+ "\nSweets: " + sweets.toString();
+                + "\nSweets: " + sweets.toString();
     }
 }
