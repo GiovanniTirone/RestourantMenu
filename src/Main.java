@@ -24,6 +24,13 @@ public class Main {
         menu.addFirst("Vellutata di sedano rapa", "sedano rapa");
         menu.addFirst("Gazpacho di anguria e pomodoro", new ArrayList<>(Arrays.asList("anguria", "pomodoro")));
 
+        //create the sweets:
+        menu.addSweet("Tiramisu' vegano", new ArrayList<>(Arrays.asList("Biscotti vegani", "Caffe'", "Cacao amaro", "Yogurt soia","Panna di soia")));
+        menu.addSweet("Ciambellone vegano", new ArrayList<>(Arrays.asList("Latte vegetale", "olio di semi girasole","Farina 0", "Lievito", "Cacao amaro", "Zucchero")));
+        menu.addSweet("Semifreddo vegano", new ArrayList<>(Arrays.asList("Panna di soia", "Zucchero", "Biscotti vegani", "Frutti di bosco", "Cioccolato Fondente", "Olio di cocco")));
+        menu.addSweet("Torta vegana al cioccolato", new ArrayList<>(Arrays.asList("Farina 1", "Latte vegetale", "Olio di semi girasole", "Vaniglia", "Latte vegetale", "Lievito", "Ciccolato fondente")));
+        menu.addSweet("Torta vegana alle carote", new ArrayList<>(Arrays.asList("Farina di mandorle", "Latte vegetale", "Zucchero", "Carote", "Olio di semi girasole", "Vaniglia")));
+
         //print the menu
         System.out.println(menu.toString());
 
