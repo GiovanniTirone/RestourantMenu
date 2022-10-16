@@ -1,9 +1,11 @@
 package restaurant;
 
+import calendar.MealBookings;
+import calendar.Prenotation;
+
 import java.time.*;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 public class Restaurant {
     public  Table tables [] = new Table []  { new Table(1, 3),
@@ -81,10 +83,28 @@ public class Restaurant {
         }
     }
 
-    public int returnFirstFreeTableAtTime (LocalTime time, int peopleNumber) {
-        for(Table t : tables) {
-            if(t.seats<peopleNumber) continue;
-            if(time.isBefore())
+    public Table getTableByNumber(int number) {
+        for (Table t : tables) {if(t.number == number) return t;}
+        return null;
+    }
+
+    public int returnFirstFreeTableAtTime (LocalTime time, int peopleNumber, MealBookings mealBookings,TimeTable timeTable) {
+        List <Long> distances = new ArrayList<>();
+        List <Integer> distancesNumberTables = new ArrayList<>();
+        long maxDistance = Long.MIN_VALUE;
+        int maxDistanceTable;
+        for(Prenotation p : mealBookings){
+            if(getTableByNumber(p.numberTable).seats<peopleNumber)continue;
+            long dist = ChronoUnit.MINUTES.between(time,p.time);
+            if(dist<0){if(time.minusMinutes(Math.abs(dist)))}
+            distances.add(dist);
+            distancesNumberTables.add(p.numberTable);
+            if (Math.abs(dist) > Math.abs(maxDistance)) {
+                maxDistance = dist;
+                maxDistanceTable = p.numberTable;
+            }
+
         }
+
     }
 }
