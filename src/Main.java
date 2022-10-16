@@ -41,13 +41,14 @@ public class Main {
         User user4 = new User("Pietro");
 
 
-        bookTable(user1,4,15,10,2022,20,00);
+       /* bookTable(user1,4,15,10,2022,20,00);
         bookTable(user2,4,15,10,2022,20,00);
         bookTable(user3,2,15,10,2022,13,15);
         bookTable(user4,3,16,10,2022,13,50);
         bookTable(user2,6,16,10,2022,12,15);
-        bookTable(user3,3,10,11,2022,21,00);
+        bookTable(user3,3,10,11,2022,21,00);*/
         bookTable(user1,5,11,11,2022,20,00);
+        bookTable(user3,4,11,11,2022,20,50);
 
 
         MyTables.visualizeTable(calendar.createTable());

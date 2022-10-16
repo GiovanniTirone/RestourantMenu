@@ -10,6 +10,7 @@ import java.time.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class Calendar {
         public  List<DayBookings> bookings;
@@ -32,11 +33,13 @@ public class Calendar {
 
                 if(targetDayBooking == null) {
                         return restaurant.getTableFromAllTables(peopleNumber);}
-                else{
-                        return lunchOrDinner.equals("lunch") ?
-                                targetDayBooking.lunchBookings.getFreeTableAtTime(time, peopleNumber,restaurant) :
-                                targetDayBooking.dinnerBookings.getFreeTableAtTime(time, peopleNumber,restaurant);
-                }
+                else if(lunchOrDinner.equals("lunch")){
+                        Set<Integer> takenTables = targetDayBooking.lunchBookings.getTakenTablesAtTime(time);
+                        return restaurant.getFreeTable(peopleNumber,takenTables);
+                } else {
+                        Set<Integer> takenTables = targetDayBooking.dinnerBookings.getTakenTablesAtTime(time);
+                        return restaurant.getFreeTable(peopleNumber,takenTables);
+                 }
         }
 
 

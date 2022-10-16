@@ -40,7 +40,7 @@ public class Restaurant {
             if(freeTablesNumbers.contains(t.number)) {
                 if (t.seats >= peopleNumber) {
                     if (t.seats == peopleNumber) {
-                        assignedTable = t.seats;
+                        assignedTable = t.number;
                         break;
                     }
                     if (t.seats < assignedTableSeats) {
@@ -64,4 +64,27 @@ public class Restaurant {
         return getTableFromFreeTables(peopleNumber,tablesNumbers);
     }
 
+    public Set<Integer> getFreeTables (Set<Integer> takenTables) {
+        Set<Integer> freeTables = new HashSet<>();
+        for(Table table : restaurant.tables){
+            if(takenTables.contains(table.number)) continue;
+            else freeTables.add(table.number);
+        }
+        return freeTables;
+    }
+
+    public int getFreeTable(int peopleNumber, Set<Integer>takenTables){
+        Set<Integer> freeTables = getFreeTables(takenTables);
+        if(freeTables.size()>0) return getTableFromFreeTables(peopleNumber,freeTables);
+        else{
+            return -1;
+        }
+    }
+
+    public int returnFirstFreeTableAtTime (LocalTime time, int peopleNumber) {
+        for(Table t : tables) {
+            if(t.seats<peopleNumber) continue;
+            if(time.isBefore())
+        }
+    }
 }
