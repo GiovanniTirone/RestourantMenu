@@ -48,7 +48,11 @@ public class Main {
         bookTable(user2,6,16,10,2022,12,15);
         bookTable(user3,3,10,11,2022,21,00);*/
         bookTable(user1,5,11,11,2022,20,00);
-        bookTable(user3,4,11,11,2022,20,50);
+        bookTable(user3,4,11,11,2022,20,10);
+        bookTable(user1,2,11,11,2022,20,00);
+        bookTable(user1,2,11,11,2022,20,00);
+        bookTable(user1,2,11,11,2022,20,00);
+        bookTable(user1,2,11,11,2022,20,00);
 
 
         MyTables.visualizeTable(calendar.createTable());

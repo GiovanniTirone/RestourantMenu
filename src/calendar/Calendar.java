@@ -7,10 +7,7 @@ import tables.MyTables;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.time.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Calendar {
         public  List<DayBookings> bookings;
@@ -55,8 +52,11 @@ public class Calendar {
                 String lunchOrDinner = timetable.timeIsInLunchOrDinnerRange(time);
                 if(lunchOrDinner.equals("no")) return -2;
                 int freeTable = checkFreeTable(date,time,peopleNumber,lunchOrDinner,restaurant);
+                DayBookings dayBookings = searchDayBookings(date);
+                if(freeTable<0){
+                      return -3;
+                }
                 if(freeTable>0){
-                        DayBookings dayBookings = searchDayBookings(date);
                         if(dayBookings!=null) {
                                 dayBookings.addPrenotation(freeTable,time,name,timetable);
                         } else{
@@ -67,6 +67,38 @@ public class Calendar {
                         return -1;
                 }
         }
+
+        public Map<String,Object> bookTableAtDifferentTime (LocalDate date, LocalTime time, String name, int peopleNumber, Restaurant restaurant,TimeTable timeTable) {
+                DayBookings dayBookings = searchDayBookings(date);
+                String lunchOrDinner = timeTable.timeIsInLunchOrDinnerRange(time);
+                if (lunchOrDinner.equals("lunch")) {
+                        Map<String, Object> numberAndTime = restaurant.getFirstFreeTableAtTime(time, peopleNumber, dayBookings.lunchBookings, timeTable);
+                        if (askForFreeTable((LocalTime) numberAndTime.get("timeOfFreeTable"))) {
+                                dayBookings.addPrenotation((int) numberAndTime.get("numberOfFreeTable"), (LocalTime) numberAndTime.get("timeOfFreeTable"), name, timeTable);
+                                return numberAndTime;
+                        } else return null;
+                } else {
+                        Map<String, Object> numberAndTime = restaurant.getFirstFreeTableAtTime(time, peopleNumber, dayBookings.dinnerBookings, timeTable);
+                        if (askForFreeTable((LocalTime) numberAndTime.get("timeOfFreeTable"))) {
+                                dayBookings.addPrenotation((int) numberAndTime.get("numberOfFreeTable"), (LocalTime) numberAndTime.get("timeOfFreeTable"), name, timeTable);
+                                return  numberAndTime;
+                        } else return null;
+                }
+        }
+
+        public boolean askForFreeTable (LocalTime time) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("There is a free table at time " + time.toString());
+                System.out.println("Please insert yes if you want to book at this time, otherwise insert no");
+                String command = scanner.nextLine();
+                while(true) {
+                        if(command.equals("yes")) return true;
+                        else if(command.equals("no")) return false;
+                        System.out.println("Please insert yes if you want to book at this time, otherwise insert no");
+                        command = scanner.nextLine();
+                }
+        }
+
 
         public  boolean removePrenotation (LocalDate date, LocalTime time, int tableNumber,TimeTable timeTable) {
                 DayBookings db = searchDayBookings(date);
