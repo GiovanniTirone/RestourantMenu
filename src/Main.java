@@ -30,11 +30,11 @@ public class Main {
         menu.addSeconds("Sformato vegan di verdure estive", new ArrayList<>(Arrays.asList("zucchine", "melenzane", "peperoni")), 13);
 
         //create the sweets:
-        menu.addSweet("Tiramisu' vegano", new ArrayList<>(Arrays.asList("Biscotti vegani", "Caffe'", "Cacao amaro", "Yogurt soia","Panna di soia")), 12);
-        menu.addSweet("Ciambellone vegano", new ArrayList<>(Arrays.asList("Latte vegetale", "olio di semi girasole","Farina 0", "Lievito", "Cacao amaro", "Zucchero")), 15);
-        menu.addSweet("Semifreddo vegano", new ArrayList<>(Arrays.asList("Panna di soia", "Zucchero", "Biscotti vegani", "Frutti di bosco", "Cioccolato Fondente", "Olio di cocco")), 10);
-        menu.addSweet("Torta vegana al cioccolato", new ArrayList<>(Arrays.asList("Farina 1", "Latte vegetale", "Olio di semi girasole", "Vaniglia", "Latte vegetale", "Lievito", "Ciccolato fondente")), 12);
-        menu.addSweet("Torta vegana alle carote", new ArrayList<>(Arrays.asList("Farina di mandorle", "Latte vegetale", "Zucchero", "Carote", "Olio di semi girasole", "Vaniglia")), 14);
+        menu.addDessert("Tiramisu' vegano", new ArrayList<>(Arrays.asList("Biscotti vegani", "Caffe'", "Cacao amaro", "Yogurt soia","Panna di soia")), 12);
+        menu.addDessert("Ciambellone vegano", new ArrayList<>(Arrays.asList("Latte vegetale", "olio di semi girasole","Farina 0", "Lievito", "Cacao amaro", "Zucchero")), 15);
+        menu.addDessert("Semifreddo vegano", new ArrayList<>(Arrays.asList("Panna di soia", "Zucchero", "Biscotti vegani", "Frutti di bosco", "Cioccolato Fondente", "Olio di cocco")), 10);
+        menu.addDessert("Torta vegana al cioccolato", new ArrayList<>(Arrays.asList("Farina 1", "Latte vegetale", "Olio di semi girasole", "Vaniglia", "Latte vegetale", "Lievito", "Ciccolato fondente")), 12);
+        menu.addDessert("Torta vegana alle carote", new ArrayList<>(Arrays.asList("Farina di mandorle", "Latte vegetale", "Zucchero", "Carote", "Olio di semi girasole", "Vaniglia")), 14);
 
         //print the menu
         System.out.println(menu.toString());
