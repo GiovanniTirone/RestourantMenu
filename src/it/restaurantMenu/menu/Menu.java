@@ -50,15 +50,15 @@ public class Menu {
     public void addDessert (String name, List<String>ingredients, double price){ this.desserts.add(new Dessert(name, ingredients, price)); }
 
 
-    public String printMenu () {
+    public String print () {
         return    "Restaurant name: " + restaurantName
                 + "\nType: " + type
-                + "\nDrinks: " +drinks.toString()
+                + "\nDrinks: " +drinks.print()
                 + "\n--------------------------------------"
-                + "\nFirsts: " + firsts.toString()
+                + "\nFirsts: " + firsts.print()
                 + "\n--------------------------------------"
-                + "\nSeconds: " + seconds.toString()
+                + "\nSeconds: " + seconds.print()
                 + "\n--------------------------------------"
-                + "\nDesserts: " + desserts.toString();
+                + "\nDesserts: " + desserts.print();
     }
 }

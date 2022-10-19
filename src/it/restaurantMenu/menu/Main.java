@@ -12,8 +12,8 @@ public class Main {
         menu.addDrink("Acqua", "Acqua" , 2);
         menu.addDrink("Vino","Uva della Valtellina", 15);
         menu.addDrink("Birra",new ArrayList<>(Arrays.asList("Acqua","Malto d'Orzo","Luppolo","Lievito")), 6);
-        menu.addDrink("Caffè'",new ArrayList<>(Arrays.asList("Acqua","Caffè")), 3);
-        menu.addDrink("Thè",new ArrayList<>(Arrays.asList("Acqua","Thè")),3);
+        menu.addDrink("Caffe'",new ArrayList<>(Arrays.asList("Acqua","Caffe")), 3);
+        menu.addDrink("The'",new ArrayList<>(Arrays.asList("Acqua","The")),3);
         menu.addDrink("Aranciata",new ArrayList<>(Arrays.asList("Arance","Acqua","Zucchero")), 3);
 
 
@@ -39,7 +39,7 @@ public class Main {
         menu.addDessert("Torta vegana alle carote", new ArrayList<>(Arrays.asList("Farina di mandorle", "Latte vegetale", "Zucchero", "Carote", "Olio di semi girasole", "Vaniglia")), 14);
 
         //print the menu
-        System.out.println(menu.toString());
+        System.out.println(menu.print());
 
     }
 }

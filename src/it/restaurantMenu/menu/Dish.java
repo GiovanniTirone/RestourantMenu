@@ -31,8 +31,8 @@ public class Dish{
     public void setPrice (double price){
         this.price = price;
     }
-    @Override
-    public String toString () {
+
+    public String print () {
             return this.name.toUpperCase() + "     " + "Price: " + price + "$" + "\n  Ingredients: " + this.ingredients.toString();}
 
 }

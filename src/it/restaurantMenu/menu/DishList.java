@@ -40,11 +40,11 @@ public class DishList <T extends Dish> extends ArrayList <Dish> {
     */
 
 
-    @Override
-    public String toString () {
+
+    public String print () {
         String str = "";
         for(Dish dish : this) {
-            str += "\n" + dish.toString();
+            str += "\n" + dish.print();
         };
         return str;
     }
