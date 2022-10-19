@@ -1,3 +1,5 @@
+package it.restaurantMenu.menu;
+
 import java.util.List;
 
 public class Menu {
@@ -24,9 +26,6 @@ public class Menu {
         return menu;
     }
 
-    public void addDrink (String name, double price){
-        this.drinks.add(new Drink(name, price));
-    }
 
     public void addDrink (String name,String ingredient, double price){
         this.drinks.add(new Drink(name,ingredient, price));
@@ -46,14 +45,12 @@ public class Menu {
     public void addSeconds (String name,List<String>ingredients, double price){this.seconds.add(new Second(name,ingredients,price));}
 
 
-    public void addDessert (String name, double price){ this.desserts.add(new Dessert(name, price)); }
-
     public void addDessert (String name, String ingredient, double price){ this.desserts.add(new Dessert(name, ingredient, price)); }
 
     public void addDessert (String name, List<String>ingredients, double price){ this.desserts.add(new Dessert(name, ingredients, price)); }
 
-    @Override
-    public String toString () {
+
+    public String printMenu () {
         return    "Restaurant name: " + restaurantName
                 + "\nType: " + type
                 + "\nDrinks: " +drinks.toString()
@@ -61,7 +58,7 @@ public class Menu {
                 + "\nFirsts: " + firsts.toString()
                 + "\n--------------------------------------"
                 + "\nSeconds: " + seconds.toString()
-                + "\n--------------------------------------";
+                + "\n--------------------------------------"
                 + "\nDesserts: " + desserts.toString();
     }
 }
