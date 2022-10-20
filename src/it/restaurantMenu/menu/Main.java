@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         //create the menu:
-        Menu menu = Menu.getIstanceMenu();
+        Menu menu = new Menu();
 
         //create the drinks:
         menu.addDrink("Acqua", "Acqua" , 2);

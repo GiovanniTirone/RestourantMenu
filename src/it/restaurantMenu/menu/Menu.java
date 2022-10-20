@@ -13,18 +13,14 @@ public class Menu {
     public DishList<Dessert> desserts;
 
 
-    private Menu  () {
+    public Menu  () {
         this.drinks = new DishList<>();
         this.firsts = new DishList<>();
         this.seconds = new DishList<>();
         this.desserts = new DishList<>();
 
     };
-    private static Menu menu = new Menu ();
 
-    public static Menu getIstanceMenu() {
-        return menu;
-    }
 
 
     public void addDrink (String name,String ingredient, double price){
