@@ -1,5 +1,4 @@
 package it.restaurantMenu.timeTable;
-
 import it.restaurantMenu.menu.Menu;
 
 public class Day {

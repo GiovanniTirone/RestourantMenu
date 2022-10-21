@@ -1,5 +1,4 @@
 package it.restaurantMenu.timeTable;
-
 import java.time.LocalTime;
 
 public class TimeTable {
