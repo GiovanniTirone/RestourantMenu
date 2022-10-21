@@ -5,7 +5,15 @@ import java.util.List;
 
 public class Dessert extends Dish{
 
+    public Dessert (String name, Ingredients ingredients, double price) {
+        super.Dish(name, ingredients, price);
+    }
 
+    public Dessert (String name, List<Ingredients> ingredients, double price) {
+        super.Dish(name, ingredients, price);
+    }
+
+/*
     public Dessert(String name, String ingredient, double price) {
         this.name = name;
         this.price = price;
@@ -16,6 +24,6 @@ public class Dessert extends Dish{
         this.name = name;
         this.price = price;
         this.ingredients = new ArrayList<>(ingredients);
-    }
+    }*/
 
 }

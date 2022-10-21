@@ -6,6 +6,14 @@ import java.util.List;
 
 public class First extends Dish{
 
+    public First (String name, Ingredients ingredients, double price) {
+        super.Dish(name, ingredients, price);
+    }
+
+    public First (String name, List<Ingredients> ingredients, double price) {
+        super.Dish(name, ingredients, price);
+    }
+/*
     public First (String name, String ingredient, double price) {
         this.name = name;
         this.ingredients = new ArrayList<>(Arrays.asList(ingredient));
@@ -15,5 +23,6 @@ public class First extends Dish{
         this.name = name;
         this.ingredients = new ArrayList<>(ingredients);
         this.price = price;
-    }
+    }*/
+
 }

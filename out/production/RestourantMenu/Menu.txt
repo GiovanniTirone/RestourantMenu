@@ -26,8 +26,8 @@ Secondi:
 *Sformato vegan di verdure estive
 
 Dolci:
-*Tiramisù vegano
-*Ciambellone vegano
-*Semifreddo vegano
-*Torta vegana al cioccolato
-*Torta vegana alle carote
+* Tiramisù vegano
+* Ciambellone vegano
+* Semifreddo vegano
+* Torta vegana al cioccolato
+* Torta vegana alle carote

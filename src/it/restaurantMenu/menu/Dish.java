@@ -1,38 +1,50 @@
 package it.restaurantMenu.menu;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Dish{
     public String name;
-    public List<String> ingredients;
+    public List<Ingredients> ingredients;
 
     public double price;
 
-    public String getName () {
-        return this.name;
+
+    public void Dish(String name, Ingredients ingredient, double price) {
+        this.name = name;
+        this.price = price;
+        this.ingredients = new ArrayList<>(Arrays.asList(ingredient));
     }
 
-    public List<String> getIngredients () {
-        return this.ingredients;
-    }
-
-    public double getPrice () {
-        return this.price;
-    }
-
-    public void setName (String name) {
-        this.name =name;
-    }
-
-    public void setIngredients (List<String>ingredients){
+    public void Dish(String name, List<Ingredients> ingredients, double price) {
+        this.name = name;
+        this.price = price;
         this.ingredients = ingredients;
     }
 
-    public void setPrice (double price){
+/*
+    public void setName(String name){this.name = name;}
+
+    public void setPrice(double price){this.price = price;}
+
+    public void setIngredients(List<String> ingredients) {this.ingredients = ingredients;}
+
+    public void setDish(String name, double price, List<String> ingredients) {
+        this.name = name;
         this.price = price;
+        this.ingredients = ingredients;
     }
 
+    public String getName() {return name;}
+
+    public List<String> getIngredients() {return ingredients;}
+
+    public double getPrice() {return price;}*/
+
+
+
     public String print () {
-            return this.name.toUpperCase() + "     " + "Price: " + price + "$" + "\n  Ingredients: " + this.ingredients.toString();}
+            return name + "     " + "Price: " + price + " $" + "\n  Ingredients: " + ingredients.toString();}
 
 }
