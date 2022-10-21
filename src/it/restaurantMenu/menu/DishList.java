@@ -1,11 +1,8 @@
 package it.restaurantMenu.menu;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
-public class DishList <T extends Dish> extends ArrayList <Dish> {
+public class DishList <T extends Food> extends ArrayList <Food> {
     double pricesAverage;
 
     public DishList () {
@@ -43,7 +40,7 @@ public class DishList <T extends Dish> extends ArrayList <Dish> {
 
     public String print () {
         String str = "";
-        for(Dish dish : this) {
+        for(Food dish : this) {
             str += "\n" + dish.print();
         };
         return str;
