@@ -1,8 +1,9 @@
 package it.restaurantMenu.menu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DishList <T extends Food> extends ArrayList <Food> {
+public class DishList <T extends Food> extends ArrayList <Food> implements Serializable {
     double pricesAverage;
 
     public DishList () {

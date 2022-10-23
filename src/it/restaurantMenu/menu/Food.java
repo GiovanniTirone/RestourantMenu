@@ -1,16 +1,16 @@
 package it.restaurantMenu.menu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Food {
+public class Food implements Serializable {
     public TypeFood type;
     public String name;
     public List<Ingredients> ingredients;
 
     public double price;
-
 
     public Food(TypeFood typeFood, String name, Ingredients ingredient, double price) {
         this.type = typeFood;
@@ -46,7 +46,8 @@ public class Food {
     public double getPrice() {return price;}*/
 
 
-    public String print () {
-            return name + "     " + "Price: " + price + " $" + "\n  Ingredients: " + ingredients.toString();}
+    public String print() {
+        return String.format("%-50s%-5s €\n\tIngredients: %-5s\n", name, String.format("%.2f", price), ingredients.toString().toLowerCase());
+    }
 
 }
