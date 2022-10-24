@@ -5,7 +5,7 @@ PACKAGES:
 * .restaurantMenu
     * .menu: 
       Contiene le seguenti classi: 
-      * Food: classe che descrive un generico cibo. Contiene le variabili: type, name, ingredients, price.
+      * Food: classe che descrive un generico cibo. Contiene le variabili: type, name, dishIngredients, price.
       * Drink: sottoclasse di Food
       * Dish: sottoclasse di Food
       * DishList: classe che estende ArrayList, può contenere classi che sono estensioni di Food
