@@ -26,24 +26,18 @@ public class Food {
         this.ingredients = ingredients;
     }
 
-/*
+
     public void setName(String name){this.name = name;}
 
     public void setPrice(double price){this.price = price;}
 
-    public void setIngredients(List<String> ingredients) {this.ingredients = ingredients;}
-
-    public void setDish(String name, double price, List<String> ingredients) {
-        this.name = name;
-        this.price = price;
-        this.ingredients = ingredients;
-    }
+    public void setIngredients(List<Ingredients> ingredients) {this.ingredients = ingredients;}
 
     public String getName() {return name;}
 
-    public List<String> getIngredients() {return ingredients;}
+    public List<Ingredients> getIngredients() {return ingredients;}
 
-    public double getPrice() {return price;}*/
+    public double getPrice() {return price;}
 
 
     public String print () {

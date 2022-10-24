@@ -70,12 +70,19 @@ public class Menu {
     public String print () {
         return    "Restaurant name: " + restaurantName
                 + "\nType: " + type
+                + "\n--------------------------------------"
                 + "\nDrinks: " +drinks.print()
+                + "\n--------------------------------------"
+                + "\nStarters: " +starters.print()
                 + "\n--------------------------------------"
                 + "\nFirsts: " + firsts.print()
                 + "\n--------------------------------------"
                 + "\nSeconds: " + seconds.print()
                 + "\n--------------------------------------"
-                + "\nDesserts: " + desserts.print();
+                + "\nSide dishes: " + sideDishes.print()
+                + "\n--------------------------------------"
+                + "\nDesserts: " + desserts.print()
+                + "\n--------------------------------------"
+                + "\nFruits: " + fruits.print();
     }
 }
