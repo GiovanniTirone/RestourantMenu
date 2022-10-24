@@ -12,6 +12,12 @@ public class Food implements Serializable {
 
     public double price;
 
+    public Food(TypeFood typeFood, String name, double price){
+        this.type = typeFood;
+        this.name = name;
+        this.price = price;
+    }
+
     public Food(TypeFood typeFood, String name, Ingredients ingredient, double price) {
         this.type = typeFood;
         this.name = name;

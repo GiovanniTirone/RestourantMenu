@@ -7,6 +7,10 @@ import java.util.List;
 
 public class Dish extends Food implements Serializable {
 
+    public Dish(TypeFood typeFood, String name, double price){
+        super(typeFood, name, price);
+    }
+
     public Dish (TypeFood typeFood,String name, Ingredients ingredients, double price) {
         super(typeFood, name, ingredients, price);
     }
