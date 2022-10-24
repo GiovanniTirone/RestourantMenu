@@ -19,7 +19,7 @@ public class Order implements IOrder, Serializable {
     private double totalPrice;
     private static int idOrders = 0;
 
-    private static String restaurantName = Menu.getIstanceMenu().restaurantName;
+    private static String restaurantName = new Menu().restaurantName;
 
     private Order(int idOrder){
         this.idOrder = idOrder;
