@@ -1,10 +1,11 @@
 package it.restaurantMenu.menu;
 
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class Menu {
+public class Menu implements Serializable {
     public String restaurantName = "Ristorante Team-1" ;
     public String type = "Vegano";
 
@@ -63,22 +64,17 @@ public class Menu {
     }
 
 
-    public String print () {
-        return    "Restaurant name: " + restaurantName
-                + "\nType: " + type
-                + "\n--------------------------------------"
-                + "\nDrinks: " +drinks.print()
-                + "\n--------------------------------------"
-                + "\nStarters: " +starters.print()
-                + "\n--------------------------------------"
-                + "\nFirsts: " + firsts.print()
-                + "\n--------------------------------------"
-                + "\nSeconds: " + seconds.print()
-                + "\n--------------------------------------"
-                + "\nSide dishes: " + sideDishes.print()
-                + "\n--------------------------------------"
-                + "\nDesserts: " + desserts.print()
-                + "\n--------------------------------------"
-                + "\nFruits: " + fruits.print();
+    public String printMenuDetails() {
+        return  String.format("%34s\n\n", restaurantName)
+                + String.format("%24s %s", "MENU", type.toUpperCase())
+                + "\n\n---------------------------------------------------------"
+                + "\n\nDRINKS:\n" + drinks.print()
+                + "\n---------------------------------------------------------"
+                + "\n\nFIRSTS:\n" + firsts.print()
+                + "\n---------------------------------------------------------"
+                + "\n\nSECONDS:\n" + seconds.print()
+                + "\n---------------------------------------------------------"
+                + "\n\nDESSERTS:\n" + desserts.print()
+                + "\n---------------------------------------------------------";
     }
 }

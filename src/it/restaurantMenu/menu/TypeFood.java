@@ -1,6 +1,8 @@
 package it.restaurantMenu.menu;
 
-public enum TypeFood {
+import java.io.Serializable;
+
+public enum TypeFood implements Serializable {
     DRINK,
     STARTER,
     FIRST,
