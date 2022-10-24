@@ -8,7 +8,7 @@ public class Menu {
     public String restaurantName = "Ristorante Team-1" ;
     public String type = "Vegano";
 
-    public DishList <Drink> starters;
+    public DishList <Dish> starters;
     public DishList <Drink> drinks;
     public DishList <Dish> firsts;
     public DishList <Dish> seconds;
@@ -17,7 +17,10 @@ public class Menu {
     public DishList<Dish> fruits;
 
 
-    private Menu () {
+
+
+
+    public Menu  () {
         this.starters = new DishList<>();
         this.drinks = new DishList<>();
         this.firsts = new DishList<>();
@@ -27,16 +30,18 @@ public class Menu {
         this.fruits = new DishList<>();
 
     };
-    private static Menu menu = new Menu ();
 
-    public static Menu getIstanceMenu() {
-        return menu;
-    }
 
 
     public void addDrink (String name,Ingredients ingredient, double price){this.drinks.add(new Drink(name, ingredient, price));}
     public void addDrink (String name,List<Ingredients>ingredients, double price){this.drinks.add(new Drink(name,ingredients, price));}
 
+    public void addFood (TypeFood typeFood, String name,Ingredients ingredient, double price){
+            getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
+    }
+    public void addFood (TypeFood typeFood, String name,List<Ingredients>ingredients, double price){
+            getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
+    }
 
     private DishList <? extends Food> getDishListByTypeFood(TypeFood food){
 
@@ -55,15 +60,6 @@ public class Menu {
                 return this.fruits;
         }
         return null;
-    }
-
-
-    public void addFood (TypeFood typeFood, String name,Ingredients ingredient, double price){
-        getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
-    }
-
-    public void addFood (TypeFood typeFood, String name,List<Ingredients>ingredients, double price){
-        getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
     }
 
 
