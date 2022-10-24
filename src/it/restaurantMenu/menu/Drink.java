@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Drink extends Food implements Serializable {
 
+    public Drink(String name, double price){
+        super(TypeFood.DRINK, name, price);
+    }
+
     public Drink (String name, Ingredients ingredients, double price) {
         super(TypeFood.DRINK, name, ingredients, price);
     }
