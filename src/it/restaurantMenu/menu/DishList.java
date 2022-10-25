@@ -15,6 +15,13 @@ public class DishList <T extends Food> extends ArrayList <Food> {
         pricesAverage /= this.size();
     }
 
+    public Food getFoodByName (String name) {
+        for(Food food : this){
+            if(food.getName().equals(name)) return food;
+        }
+        return null;
+    }
+
     /*
     public Set<Dish> getDishesWithAllergen (Allergen allergen ) {
         Set<Dish> dishes = new HashSet<>();

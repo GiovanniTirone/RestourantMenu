@@ -62,6 +62,10 @@ public class Menu {
         return null;
     }
 
+    public Food getFoodByNameAndType (String name, TypeFood typeFood) {
+        return getDishListByTypeFood(typeFood).getFoodByName(name);
+    }
+
 
     public String print () {
         return    "Restaurant name: " + restaurantName
