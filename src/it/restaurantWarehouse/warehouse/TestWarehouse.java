@@ -10,7 +10,7 @@ public class TestWarehouse {
         Scanner input = new Scanner(System.in);
 
 
-        while (true) {
+        //while (true) { //prova a toglierlo e inserire 2
             System.out.println("Cosa vuoi fare? <1> PANORAMICA DEL MAGAZZINO | <2> AGGIUNGI/RIMUOVI INGREDIENTE | <3> AGGIUNGI/RIMUOVI QUANTITÀ");
             String firstStep = input.nextLine();
             switch (firstStep) {
@@ -58,7 +58,7 @@ public class TestWarehouse {
                     }
                     break;
             }
-        }
+        //}
     }
 }
 

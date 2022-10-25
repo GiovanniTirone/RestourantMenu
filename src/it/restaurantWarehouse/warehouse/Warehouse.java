@@ -5,12 +5,16 @@ import java.util.List;
 
 public class Warehouse {
 
-    public List<Ingredients> ingredientsList = new ArrayList<>();
+    public List<Ingredients> ingredientsList;
+
+    public Warehouse(){
+        this.ingredientsList = new ArrayList<>();
+    }
 
     public void warehouseOverview() {
         for (Ingredients ingredient : ingredientsList) {
             System.out.println(ingredient.getName() + " " + ingredient.getQuantity());
-        }
+        } //se la lista è vuota..
     }
 
     public void addToWarehouse(String name, int quantity){
