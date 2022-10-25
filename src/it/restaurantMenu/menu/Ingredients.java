@@ -1,6 +1,8 @@
 package it.restaurantMenu.menu;
 
-public enum Ingredients {
+import java.io.Serializable;
+
+public enum Ingredients implements Serializable {
 
     ACQUA,
     LUPPOLO,
