@@ -1,4 +1,4 @@
-package it.restaurantMenu.menu;
+package it.restaurantWarehouse.warehouse;
 public class Ingredients {
 
     private String name;
