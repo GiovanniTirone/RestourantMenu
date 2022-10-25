@@ -2,10 +2,11 @@ package it.restaurantWarehouse.warehouse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Warehouse {
 
-    public List<Ingredients> ingredientsList;
+    public static List<Ingredients> ingredientsList;
 
     public Warehouse(){
         this.ingredientsList = new ArrayList<>();
@@ -14,20 +15,22 @@ public class Warehouse {
     public void warehouseOverview() {
         for (Ingredients ingredient : ingredientsList) {
             System.out.println(ingredient.getName() + " " + ingredient.getQuantity());
-        } //se la lista è vuota..
+        }
     }
 
     public void addToWarehouse(String name, int quantity){
-        Ingredients ingredients = new Ingredients(name);
-        ingredients.setQuantity(quantity);
-        ingredientsList.add(ingredients);
+        Ingredients ingredient = new Ingredients(name);
+        ingredient.setQuantity(quantity);
+        ingredientsList.add(ingredient);
+        System.out.println(quantity + " units of '" + ingredient.getName() + "' has been added to the warehouse.");
     }
 
     public void removeFromWarehouse(String name){
         for (Ingredients ingredient: ingredientsList) {
             if (name.equals(ingredient.getName())) {
                 ingredientsList.remove(ingredient);
-                System.out.println(ingredient.getName() + " has been removed from the warehouse.");}
+                //System.out.println("'" + ingredient.getName() + "'" + " has been removed from the warehouse.");
+                }
             else {
                 System.out.println("Ingredient not in the list");}
         }
@@ -37,19 +40,23 @@ public class Warehouse {
         for (Ingredients ingredient: ingredientsList) {
             if (ingredient.getName().equals(name)) {
                 ingredient.setQuantity(ingredient.getQuantity() + add);
-                System.out.println(ingredient.getName() + " has been added. \nYou have now " + ingredient.getQuantity() + " in stock");}
+                System.out.println(add + " units of '" + ingredient.getName() + "' has been added. You have now " + ingredient.getQuantity() + " in the warehouse");}
+            else if (!Objects.equals(ingredient.getName(), name)) {
+                return;}
             else {
-                System.out.println("Ingredient not in the list");}
+                System.out.println("Ingredient not in warehouse");}
         }
     }
 
     public void removeQuantity(String name, int remove){
         for (Ingredients ingredient: ingredientsList) {
-            if (ingredient.getName().equals(name)){
+            if (ingredient.getName().equals(name)) {
                 ingredient.setQuantity(ingredient.getQuantity() - remove);
-                System.out.println(ingredient.getName() + " has been removed. \nYou have now " + ingredient.getQuantity() + " in stock");}
+                System.out.println(remove + " units of '" + ingredient.getName() + "' has been removed. You have now " + ingredient.getQuantity() + " in the warehouse");}
+            else if (!Objects.equals(ingredient.getName(), name)) {
+            return;}
             else {
-                System.out.println("Ingredient not in the list");
+                System.out.println("Ingredient not the warehouse");
             }
         }
     }
