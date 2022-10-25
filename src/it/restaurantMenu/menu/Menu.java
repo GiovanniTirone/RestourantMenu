@@ -2,33 +2,32 @@ package it.restaurantMenu.menu;
 
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.util.List;
 
 public class Menu implements Serializable {
     public String restaurantName = "Ristorante Team-1" ;
     public String type = "Vegano";
 
-    public DishList <Dish> starters;
-    public DishList <Drink> drinks;
-    public DishList <Dish> firsts;
-    public DishList <Dish> seconds;
-    public DishList <Dish> sideDishes;
-    public DishList<Dish> desserts;
-    public DishList<Dish> fruits;
+    public FoodList<Dish> starters;
+    public FoodList<Drink> drinks;
+    public FoodList<Dish> firsts;
+    public FoodList<Dish> seconds;
+    public FoodList<Dish> sideDishes;
+    public FoodList<Dish> desserts;
+    public FoodList<Dish> fruits;
 
 
 
 
 
     public Menu  () {
-        this.starters = new DishList<>();
-        this.drinks = new DishList<>();
-        this.firsts = new DishList<>();
-        this.seconds = new DishList<>();
-        this.sideDishes = new DishList<>();
-        this.desserts = new DishList<>();
-        this.fruits = new DishList<>();
+        this.starters = new FoodList<>();
+        this.drinks = new FoodList<>();
+        this.firsts = new FoodList<>();
+        this.seconds = new FoodList<>();
+        this.sideDishes = new FoodList<>();
+        this.desserts = new FoodList<>();
+        this.fruits = new FoodList<>();
 
     };
 
@@ -38,13 +37,14 @@ public class Menu implements Serializable {
     public void addDrink (String name,List<Ingredients>ingredients, double price){this.drinks.add(new Drink(name,ingredients, price));}
 
     public void addFood (TypeFood typeFood, String name,Ingredients ingredient, double price){
-            getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
+            getFoodListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
     }
     public void addFood (TypeFood typeFood, String name,List<Ingredients>ingredients, double price){
-            getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
+            getFoodListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
     }
 
-    private DishList <? extends Food> getDishListByTypeFood(TypeFood food){
+
+    private FoodList<? extends Food> getFoodListByTypeFood(TypeFood food){
 
         switch(food) {
             case STARTER:
@@ -64,7 +64,7 @@ public class Menu implements Serializable {
     }
 
     public Food getFoodByNameAndType (String name, TypeFood typeFood) {
-        return getDishListByTypeFood(typeFood).getFoodByName(name);
+        return getFoodListByTypeFood(typeFood).getFoodByName(name);
     }
 
 

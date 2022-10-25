@@ -7,13 +7,12 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.List;
 
 public class Order implements IOrder, Serializable {
 
     private final int idOrder;
 
-    private DishList<? extends Food> dishList;
+    private FoodList<? extends Food> foodList;
 
     private LocalDateTime date;
     private double totalPrice;
@@ -28,16 +27,16 @@ public class Order implements IOrder, Serializable {
     public Order(LocalDateTime date){
         incrementOrdersNumber();
         this.idOrder = idOrders;
-        this.dishList = new DishList<>();
+        this.foodList = new FoodList<>();
         this.date = date;
     }
 
-    public Order(DishList<? extends Food> dishList, LocalDateTime date){
+    public Order(FoodList<? extends Food> foodList, LocalDateTime date){
         incrementOrdersNumber();
         this.idOrder = idOrders;
-        this.dishList = dishList;
+        this.foodList = foodList;
         this.date = date;
-        this.totalPrice = this.calculateTotalPrice(dishList);
+        this.totalPrice = this.calculateTotalPrice(foodList);
     }
 
     @Override
@@ -50,10 +49,10 @@ public class Order implements IOrder, Serializable {
     }
 
     @Override
-    public DishList<? extends Food> getDishList() { return dishList; }
+    public FoodList<? extends Food> getDishList() { return foodList; }
 
-    public void setDishList(DishList<? extends Food> dishList) {
-        this.dishList = dishList;
+    public void setDishList(FoodList<? extends Food> foodList) {
+        this.foodList = foodList;
     }
 
     public LocalDateTime getDate() { return date; }
@@ -70,8 +69,8 @@ public class Order implements IOrder, Serializable {
     }
 
     @Override
-    public double calculateTotalPrice(DishList<? extends Food> dishList) {
-        for(Food food : dishList){
+    public double calculateTotalPrice(FoodList<? extends Food> foodList) {
+        for(Food food : foodList){
             totalPrice += food.price;
         }
         return totalPrice;
@@ -81,7 +80,7 @@ public class Order implements IOrder, Serializable {
     public String toString() {
         return "Order{" +
                 "idOrder = '" + idOrder + '\'' +
-                ", dishList = " + dishList +
+                ", dishList = " + foodList +
                 ", date = " + date +
                 ", totalPrice = " + totalPrice +
                 '}';
@@ -94,7 +93,7 @@ public class Order implements IOrder, Serializable {
         System.out.println(date.getDayOfMonth() + " " + date.getMonth() + " " +
                 date.getYear() + " " + (date.getHour() < 10 ? "0" : "") + date.getHour() + ":" + (date.getMinute() < 10 ? "0" : "") + date.getMinute());
         System.out.println("-----------------------------------");
-        for(Food food : dishList)
+        for(Food food : foodList)
             System.out.format("%-50s%-5s €\n", food.name, String.format("%.2f", food.price));
         System.out.println("-----------------------------------");
         System.out.format("%-50s%-5s €\n", "TOTAL", String.format("%.2f", totalPrice));
@@ -108,7 +107,7 @@ public class Order implements IOrder, Serializable {
         text += date.getDayOfMonth() + " " + date.getMonth() + " " +
                 date.getYear() + " " + (date.getHour() < 10 ? "0" : "") + date.getHour() + ":" + (date.getMinute() < 10 ? "0" : "") + date.getMinute();
         text += "\n-----------------------------------\n";
-        for(Food food : dishList)
+        for(Food food : foodList)
             text += String.format("%-50s%-5s €\n", food.name, String.format("%.2f", food.price));
         text += "-----------------------------------\n";
         text += String.format("%-50s%-5s €\n", "TOTAL", String.format("%.2f", totalPrice));
@@ -132,12 +131,12 @@ public class Order implements IOrder, Serializable {
 
     @Override
     public void addDrink (String name, double price){
-        dishList.add(new Drink(name, price));
+        foodList.add(new Drink(name, price));
     }
 
     @Override
     public void addFood (TypeFood typeFood, String name, double price){
-        dishList.add(new Food(typeFood, name, price));
+        foodList.add(new Food(typeFood, name, price));
     }
 
 }

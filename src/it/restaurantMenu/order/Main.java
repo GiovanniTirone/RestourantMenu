@@ -1,6 +1,5 @@
 package it.restaurantMenu.order;
 
-import it.restaurantMenu.menu.DishList;
 import it.restaurantMenu.menu.Menu;
 import it.restaurantMenu.menu.TypeFood;
 import it.restaurantMenu.menu.utilities.MenuSerializable;

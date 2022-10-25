@@ -3,10 +3,10 @@ package it.restaurantMenu.menu;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DishList <T extends Food> extends ArrayList <Food> implements Serializable {
+public class FoodList<T extends Food> extends ArrayList <Food> implements Serializable {
     double pricesAverage;
 
-    public DishList () {
+    public FoodList() {
         super();
         this.pricesAverage = 0;
     }
