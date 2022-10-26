@@ -1,2 +1,4 @@
-package it.restaurantMenu.calendar;public enum typeMeals {
+package it.restaurantMenu.calendar {
+
+
 }
