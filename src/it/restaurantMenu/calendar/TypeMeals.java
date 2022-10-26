@@ -1,4 +1,12 @@
-package it.restaurantMenu.calendar {
+package it.restaurantMenu.calendar;
+
+public enum TypeMeals {
+
+    BREAKFAST,
+    LUNCH,
+    APERITIF,
+    DINNER
+    ;
 
 
 }

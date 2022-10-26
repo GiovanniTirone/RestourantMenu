@@ -1,4 +1,16 @@
-package it.restaurantMenu.calendar;public class Calendar {
+package it.restaurantMenu.calendar;
+import java.util.List;
+
+public class Calendar {
+
+    List<DayBookings> dayBookingsList;
+
+    public Calendar(){
+
+    }
+    public void addDayBooking(){
+
+    }
 
 
 }

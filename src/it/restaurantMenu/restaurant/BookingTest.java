@@ -1,2 +1,10 @@
-package it.restaurantMenu.Restaurant;public class BookingTest {
+package it.restaurantMenu.restaurant;
+
+public class BookingTest {
+    public static void main(String[] args) {
+
+
+
+
+    }
 }
