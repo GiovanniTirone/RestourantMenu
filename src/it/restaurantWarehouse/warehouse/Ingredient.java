@@ -1,4 +1,4 @@
-package it.restaurantMenu.menu;
+package it.restaurantWarehouse.warehouse;
 
 import java.io.Serializable;
 import java.util.List;
@@ -51,6 +51,7 @@ public class Ingredient implements Serializable {
     public void setIngredientID(int ingredientID) {
         this.ingredientID = ingredientID;
     }
+
 
     /*
     private final String name;

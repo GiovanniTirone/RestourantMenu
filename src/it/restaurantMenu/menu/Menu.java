@@ -1,8 +1,12 @@
 package it.restaurantMenu.menu;
 
 
+<<<<<<< HEAD
+import it.restaurantWarehouse.warehouse.Ingredient;
+
 import java.io.Serializable;
-import java.util.ArrayList;
+=======
+>>>>>>> personal
 import java.util.List;
 
 public class Menu implements Serializable {
@@ -33,11 +37,22 @@ public class Menu implements Serializable {
     public void addDrink (String name, Ingredient ingredient, double price){this.drinks.add(new Drink(name, new Ingredient(), price));}
     public void addDrink (String name, List<Ingredient>ingredients, double price){this.drinks.add(new Drink(name, new Ingredient(), price));}
 
+<<<<<<< HEAD
     public void addFood (TypeFood typeFood, String name, Ingredient ingredient, double price){
             getFoodListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
     }
     public void addFood (TypeFood typeFood, String name, List<Ingredient>ingredients, double price){
             getFoodListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
+=======
+    public void addDrink (String name, DishIngredients ingredient, double price){this.drinks.add(new Drink(name, ingredient, price));}
+    public void addDrink (String name, List<DishIngredients>ingredients, double price){this.drinks.add(new Drink(name,ingredients, price));}
+
+    public void addFood (TypeFood typeFood, String name, DishIngredients ingredient, double price){
+            getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
+    }
+    public void addFood (TypeFood typeFood, String name, List<DishIngredients>ingredients, double price){
+            getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
+>>>>>>> personal
     }
 
 
