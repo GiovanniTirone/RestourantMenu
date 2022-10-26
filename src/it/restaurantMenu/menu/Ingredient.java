@@ -7,8 +7,8 @@ public class Ingredient implements Serializable {
 
 
     private String name;
-    private int quantity;
-    private int ingredientID;
+    private int quantity;  // pz. - kg. - lt.
+    private int ingredientID;  // 0001, 0002, 0003
 
     public Ingredient(){
     }

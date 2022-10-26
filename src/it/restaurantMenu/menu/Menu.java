@@ -18,9 +18,6 @@ public class Menu implements Serializable {
     public FoodList<Dish> fruits;
 
 
-
-
-
     public Menu  () {
         this.starters = new FoodList<>();
         this.drinks = new FoodList<>();
@@ -31,7 +28,6 @@ public class Menu implements Serializable {
         this.fruits = new FoodList<>();
 
     };
-
 
 
     public void addDrink (String name, Ingredient ingredient, double price){this.drinks.add(new Drink(name, new Ingredient(), price));}
