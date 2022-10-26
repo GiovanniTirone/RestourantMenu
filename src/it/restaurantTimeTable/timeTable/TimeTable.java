@@ -1,4 +1,7 @@
 package it.restaurantTimeTable.timeTable;
+import it.restaurantMenu.calendar.TypeMeals;
+
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class TimeTable {
@@ -65,13 +68,24 @@ public class TimeTable {
         this.dinnerClosureTime = LocalTime.of(hour,min);
     }
 
+    public TypeMeals getTypeMealsByTime(LocalTime time){
+
+        if (time.isAfter(lunchOpeningTime) && time.isBefore(lunchClosureTime)) return TypeMeals.LUNCH;
+        if (time.isAfter(dinnerOpeningTime) && time.isBefore(dinnerClosureTime)) return TypeMeals.DINNER;
+        return null;
+        }
+
 
 
 
     public String print () {
-        return  "lunchOpeningTime: " + lunchOpeningTime +
+        return  "\ndinnerClosureTime: " + breakfastOpeningTime + //aggiungere
+                "\ndinnerClosureTime: " + breakfastClosureTime + //aggiungere
+                "lunchOpeningTime: " + lunchOpeningTime +
                 "\nlunchClosureTime: " + lunchClosureTime +
                 "\ndinnerOpeningTime: " + dinnerOpeningTime +
-                "\ndinnerClosureTime: " + dinnerClosureTime  ;
+                "\ndinnerClosureTime: " + dinnerClosureTime
+
+                ;
     }
 }

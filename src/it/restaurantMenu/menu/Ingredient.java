@@ -1,56 +1,56 @@
 package it.restaurantMenu.menu;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class Ingredients implements Serializable {
+public class Ingredient implements Serializable {
 
 
+    private String name;
+    private int quantity;
+    private int ingredientID;
 
-   /* ACQUA,
-    LUPPOLO,
-    LIEVITO,
-    MALTO_ORZO,
-    MELONE,
-    RISO,
-    ZUCCHERO,
-    UVA,
-    SEDANO_RAPA,
-    CAFFE,
-    THE,
-    CARCIOFI,
-    LIMONE,
-    ARANCIA,
-    COUS_COUS,
-    ANGURIA,
-    POMODORO,
-    TOFU,
-    FAGIOLI,
-    ZUCCHINE,
-    BISCOTTI_VEGANI,
-    FAGIOLI_CANNELLINI,
-    MIGLIO,
-    OLIO,
-    OLIVE,
-    MELENZANE,
-    PEPERONI,
-    CACAO_AMARO,
-    YOGURT_DI_SOIA,
-    SOIA,
-    PANNA_DI_SOIA,
-    LATTE_VEGETALE,
-    OLIO_DI_SEMI_GIRASOLE,
-    FARINA_0,
-    CACAO,
-    AMARO,
-    ERBE,
-    FRUTTI_DI_BOSCO,
-    CIOCCOLATO_FONDENTE,
-    OLIO_DI_COCCO,
-    FARINA_1,
-    VANIGLIA,
-    FARINA_DI_MANDORLE,
-    CAROTE*/
+    public Ingredient(){
+    }
 
+    public Ingredient(String name){
+        this.name = name;
+    }
+
+    public Ingredient(String name, int quantity){
+        this.name = name;
+        this.quantity = quantity;
+    }
+
+    public Ingredient(String name, int quantity, int ingredientID){
+        this.name = name;
+        this.quantity = quantity;
+        this.ingredientID = ingredientID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getIngredientID() {
+        return ingredientID;
+    }
+
+    public void setIngredientID(int ingredientID) {
+        this.ingredientID = ingredientID;
+    }
 
     /*
     private final String name;

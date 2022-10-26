@@ -2,6 +2,7 @@ package it.restaurantMenu.menu;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu implements Serializable {
@@ -33,13 +34,13 @@ public class Menu implements Serializable {
 
 
 
-    public void addDrink (String name,Ingredients ingredient, double price){this.drinks.add(new Drink(name, ingredient, price));}
-    public void addDrink (String name,List<Ingredients>ingredients, double price){this.drinks.add(new Drink(name,ingredients, price));}
+    public void addDrink (String name, Ingredient ingredient, double price){this.drinks.add(new Drink(name, new Ingredient(), price));}
+    public void addDrink (String name, List<Ingredient>ingredients, double price){this.drinks.add(new Drink(name, new Ingredient(), price));}
 
-    public void addFood (TypeFood typeFood, String name,Ingredients ingredient, double price){
+    public void addFood (TypeFood typeFood, String name, Ingredient ingredient, double price){
             getFoodListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
     }
-    public void addFood (TypeFood typeFood, String name,List<Ingredients>ingredients, double price){
+    public void addFood (TypeFood typeFood, String name, List<Ingredient>ingredients, double price){
             getFoodListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
     }
 
