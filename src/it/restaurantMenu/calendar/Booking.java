@@ -1,19 +1,18 @@
-package it.restaurantMenu.restaurant;
+package it.restaurantMenu.calendar;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Booking {
-
     private String name;
-    private int numberOfPeople;
+    private int peopleNumber;
     private int tableNumber;
     private LocalDate date;
     private LocalTime time;
 
     public Booking (String name, int numberOfPeople, int tableNumber, LocalDate date, LocalTime time){
         this.name = name;
-        this.numberOfPeople = numberOfPeople;
+        this.peopleNumber = numberOfPeople;
         this.tableNumber = tableNumber;
         this.date = date;
         this.time = time;
@@ -44,12 +43,12 @@ public class Booking {
         this.name = name;
     }
 
-    public int getNumberOfPeople() {
-        return numberOfPeople;
+    public int getPeopleNumber() {
+        return peopleNumber;
     }
 
-    public void setNumberOfPeople(int numberOfPeople) {
-        this.numberOfPeople = numberOfPeople;
+    public void setPeopleNumber(int peopleNumber) {
+        this.peopleNumber = peopleNumber;
     }
 
     public int getTableNumber() {
@@ -59,4 +58,6 @@ public class Booking {
     public void setTableNumber(int tableNumber) {
         this.tableNumber = tableNumber;
     }
+
+    //JTABLE
 }

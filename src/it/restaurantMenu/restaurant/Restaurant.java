@@ -7,7 +7,7 @@ public class Restaurant {
 
     private String name;
 
-    List<Table> tables;
+    List <Table> tables;
 
     public Restaurant(String name){
         this.name = name;

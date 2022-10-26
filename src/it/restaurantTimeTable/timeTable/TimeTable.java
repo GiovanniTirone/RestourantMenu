@@ -1,114 +1,42 @@
 package it.restaurantTimeTable.timeTable;
 import it.restaurantMenu.calendar.TypeMeals;
-
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TimeTable {
 
-    private Map <TypeMeals, Map<OpenClosure,LocalTime>> openClosureTimesMap;
-    private LocalTime breakfastOpeningTime;
-    private LocalTime breakfastClosureTime;
-    private LocalTime lunchOpeningTime;
-    private LocalTime lunchClosureTime;
-    private LocalTime aperitifOpeningTime;
-    private LocalTime aperitifClosureTime;
-    private LocalTime dinnerOpeningTime;
-    private LocalTime dinnerClosureTime;
+    private Map <TypeMeals, Map<OpenClosure, LocalTime>> openClosureTimesMap;
 
-    public TimeTable () {};
-
-    public TimeTable (LocalTime breakfastOpeningTime,LocalTime breakfastClosureTime,LocalTime lunchOpeningTime,LocalTime lunchClosureTime,
-                      LocalTime aperitifOpeningTime, LocalTime aperitifClosureTime, LocalTime dinnerOpeningTime,LocalTime dinnerClosureTime){
-        this.breakfastOpeningTime = breakfastOpeningTime;
-        this.breakfastClosureTime = breakfastClosureTime;
-        this.lunchOpeningTime = lunchOpeningTime;
-        this.lunchClosureTime = lunchClosureTime;
-        this.aperitifOpeningTime = aperitifOpeningTime;
-        this.aperitifClosureTime = aperitifClosureTime;
-        this.dinnerOpeningTime = dinnerOpeningTime;
-        this.dinnerClosureTime = dinnerClosureTime;
-
-        openClosureTimesMap.put(TypeMeals.BREAKFAST, Map.of(OpenClosure.OPEN,breakfastOpeningTime,OpenClosure.CLOSURE,breakfastClosureTime));
-        openClosureTimesMap.put(TypeMeals.LUNCH,Map.of(OpenClosure.OPEN,lunchOpeningTime,OpenClosure,))
+    public TimeTable (){
+        this.openClosureTimesMap = new HashMap<>();
     }
 
-
-    public LocalTime getLunchOpeningTime() {
-        return lunchOpeningTime;
+    public LocalTime getMealTime (TypeMeals typeMeals, OpenClosure openClosure){
+        return openClosureTimesMap.get(typeMeals).get(openClosure);
     }
 
-    public void setLunchOpeningTime(LocalTime lunchOpeningTime) {
-        this.lunchOpeningTime = lunchOpeningTime;
+    public void setMealTime (TypeMeals typeMeals, OpenClosure openClosure, LocalTime time) {
+        openClosureTimesMap.put(typeMeals, Map.of(openClosure,time));
     }
-
-    public void setLunchOpeningTime(int hour, int min){
-         this.lunchOpeningTime = LocalTime.of(hour,min);
-    }
-
-    public LocalTime getLunchClosureTime() {
-        return lunchClosureTime;
-    }
-
-    public void setLunchClosureTime(LocalTime lunchClosureTime) {
-        this.lunchClosureTime = lunchClosureTime;
-    }
-
-    public void setLunchClosureTime(int hour, int min){
-        this.lunchClosureTime = LocalTime.of(hour,min);
-    }
-
-    public LocalTime getDinnerOpeningTime() {
-        return dinnerOpeningTime;
-    }
-
-    public void setDinnerOpeningTime(LocalTime dinnerOpeningTime) {
-        this.dinnerOpeningTime = dinnerOpeningTime;
-    }
-
-    public void setDinnerOpeningTime(int hour, int min){
-        this.dinnerOpeningTime =  LocalTime.of(hour,min);
-    }
-
-    public LocalTime getDinnerClosureTime() {
-        return dinnerClosureTime;
-    }
-
-    public void setDinnerClosureTime(LocalTime dinnerClosureTime) {
-        this.dinnerClosureTime = dinnerClosureTime;
-    }
-
-    public void setDinnerClosureTime(int hour, int min){
-        this.dinnerClosureTime = LocalTime.of(hour,min);
-    }
-
-
-
-
-
-
-
 
     public TypeMeals getTypeMealsByTime(LocalTime time){
-
-        if (time.isAfter(lunchOpeningTime) && time.isBefore(lunchClosureTime)) return TypeMeals.LUNCH;
-        if (time.isAfter(dinnerOpeningTime) && time.isBefore(dinnerClosureTime)) return TypeMeals.DINNER;
-        return null;
+        for(TypeMeals typeMeals : openClosureTimesMap.keySet()){
+            Map typeMealMap = openClosureTimesMap.get(typeMeals);
+            if(time.isAfter((LocalTime) typeMealMap.get(OpenClosure.OPEN)) && time.isBefore((LocalTime) typeMealMap.get(OpenClosure.CLOSURE)))
+                return typeMeals;
         }
-
-
-
-
-    public String print () {
-        return  "\ndinnerClosureTime: " + breakfastOpeningTime + //aggiungere
-                "\ndinnerClosureTime: " + breakfastClosureTime + //aggiungere
-                "lunchOpeningTime: " + lunchOpeningTime +
-                "\nlunchClosureTime: " + lunchClosureTime +
-                "\ndinnerOpeningTime: " + dinnerOpeningTime +
-                "\ndinnerClosureTime: " + dinnerClosureTime
-
-                ;
+        return null;
     }
+
+    public String printDetails () {
+        String str = "";
+        for(TypeMeals typeMeals : openClosureTimesMap.keySet()){
+            for(OpenClosure openClosure : openClosureTimesMap.get(typeMeals).keySet())
+            str += typeMeals.getName() + " " + openClosure.getName() + "  time: " + openClosureTimesMap.get(typeMeals).get(openClosure);
+        }
+        return str;
+    }
+
+
 }

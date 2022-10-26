@@ -8,4 +8,5 @@ public class TestWeek {
         week.setStandardTimeTableForAllDays();
         System.out.println(week.print());
     }
+
 }
