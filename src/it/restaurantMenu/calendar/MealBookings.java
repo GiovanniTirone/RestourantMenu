@@ -5,9 +5,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MealsBooking extends ArrayList <Booking>{
+public class MealBookings extends ArrayList <Booking>{
 
     TypeMeals typeMeals;
+
+    public MealBookings(TypeMeals typeMeal) {
+        this.typeMeals = typeMeal;
+    }
 
     public int checkFreeTables(LocalTime time, int numberOfPeople){
 

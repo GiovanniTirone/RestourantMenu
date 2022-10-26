@@ -3,20 +3,36 @@ import it.restaurantMenu.calendar.TypeMeals;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TimeTable {
-    LocalTime lunchOpeningTime;
-    LocalTime lunchClosureTime;
-    LocalTime dinnerOpeningTime;
-    LocalTime dinnerClosureTime;
+
+    private Map <TypeMeals, Map<OpenClosure,LocalTime>> openClosureTimesMap;
+    private LocalTime breakfastOpeningTime;
+    private LocalTime breakfastClosureTime;
+    private LocalTime lunchOpeningTime;
+    private LocalTime lunchClosureTime;
+    private LocalTime aperitifOpeningTime;
+    private LocalTime aperitifClosureTime;
+    private LocalTime dinnerOpeningTime;
+    private LocalTime dinnerClosureTime;
 
     public TimeTable () {};
 
-    public TimeTable (LocalTime lunchOpeningTime,LocalTime lunchClosureTime,LocalTime dinnerOpeningTime,LocalTime dinnerClosureTime){
+    public TimeTable (LocalTime breakfastOpeningTime,LocalTime breakfastClosureTime,LocalTime lunchOpeningTime,LocalTime lunchClosureTime,
+                      LocalTime aperitifOpeningTime, LocalTime aperitifClosureTime, LocalTime dinnerOpeningTime,LocalTime dinnerClosureTime){
+        this.breakfastOpeningTime = breakfastOpeningTime;
+        this.breakfastClosureTime = breakfastClosureTime;
         this.lunchOpeningTime = lunchOpeningTime;
         this.lunchClosureTime = lunchClosureTime;
+        this.aperitifOpeningTime = aperitifOpeningTime;
+        this.aperitifClosureTime = aperitifClosureTime;
         this.dinnerOpeningTime = dinnerOpeningTime;
         this.dinnerClosureTime = dinnerClosureTime;
+
+        openClosureTimesMap.put(TypeMeals.BREAKFAST, Map.of(OpenClosure.OPEN,breakfastOpeningTime,OpenClosure.CLOSURE,breakfastClosureTime));
+        openClosureTimesMap.put(TypeMeals.LUNCH,Map.of(OpenClosure.OPEN,lunchOpeningTime,OpenClosure,))
     }
 
 
@@ -67,6 +83,13 @@ public class TimeTable {
     public void setDinnerClosureTime(int hour, int min){
         this.dinnerClosureTime = LocalTime.of(hour,min);
     }
+
+
+
+
+
+
+
 
     public TypeMeals getTypeMealsByTime(LocalTime time){
 
