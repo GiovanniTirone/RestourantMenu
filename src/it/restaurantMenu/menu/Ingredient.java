@@ -2,9 +2,11 @@ package it.restaurantMenu.menu;
 
 import java.io.Serializable;
 
-public enum Ingredients implements Serializable {
+public class Ingredients implements Serializable {
 
-    ACQUA,
+
+
+   /* ACQUA,
     LUPPOLO,
     LIEVITO,
     MALTO_ORZO,
@@ -47,8 +49,8 @@ public enum Ingredients implements Serializable {
     FARINA_1,
     VANIGLIA,
     FARINA_DI_MANDORLE,
-    CAROTE
-    ;
+    CAROTE*/
+
 
     /*
     private final String name;
