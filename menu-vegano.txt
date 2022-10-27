@@ -1,0 +1,48 @@
+                 Ristorante Team-1
+
+                    MENU VEGANO
+
+---------------------------------------------------------
+
+DRINKS:
+
+Acqua                                             2,00  €
+	Ingredients: acqua  
+
+Vino                                              15,00 €
+	Ingredients: uva  
+
+Birra                                             6,00  €
+	Ingredients: acqua  lievito  luppolo  
+
+---------------------------------------------------------
+
+FIRSTS:
+
+Insalata di riso e melone                         11,00 €
+	Ingredients: riso  melone  
+
+Spaghetti ai carciofi e limone                    14,00 €
+	Ingredients: carciofi  limone  
+
+---------------------------------------------------------
+
+SECONDS:
+
+Polpettone di fagioli e tofu alle erbe            13,00 €
+	Ingredients: tofu  fagioli  erbe  
+
+Zucchine ripiene con crema di fagioli bianchi     14,00 €
+	Ingredients: zucchine  fagioli bianchi  
+
+---------------------------------------------------------
+
+DESSERTS:
+
+Tiramisu' vegano                                  12,00 €
+	Ingredients: biscotti vegani  caffè  cacao  yougurt di soia  panna di soya  
+
+Ciambellone vegano                                15,00 €
+	Ingredients: latte vegetale  semi di girasole  farina 0  lievito  cacao amaro  zucchine  
+
+---------------------------------------------------------

@@ -79,8 +79,8 @@ public class TimeTable {
 
 
     public String print () {
-        return  "\ndinnerClosureTime: " + breakfastOpeningTime + //aggiungere
-                "\ndinnerClosureTime: " + breakfastClosureTime + //aggiungere
+        return  //"\ndinnerClosureTime: " + breakfastOpeningTime + //aggiungere
+                //"\ndinnerClosureTime: " + breakfastClosureTime + //aggiungere
                 "lunchOpeningTime: " + lunchOpeningTime +
                 "\nlunchClosureTime: " + lunchClosureTime +
                 "\ndinnerOpeningTime: " + dinnerOpeningTime +

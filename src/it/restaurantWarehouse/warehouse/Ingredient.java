@@ -1,5 +1,7 @@
 package it.restaurantWarehouse.warehouse;
 
+import it.restaurantMenu.menu.FoodList;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -52,17 +54,6 @@ public class Ingredient implements Serializable {
         this.ingredientID = ingredientID;
     }
 
-
-    /*
-    private final String name;
-    private final boolean surgelato;
-
-
-    private Ingredients (String name, boolean surgelato){
-
-    this.name = name;
-    this.surgelato = surgelato;
-}*/
 
 
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class Food implements Serializable {
     public TypeFood type;
     public String name;
-    public List<Ingredient> ingredient;
+    public List<Ingredient> ingredientList;
 
 
     public double price;
@@ -26,7 +26,7 @@ public class Food implements Serializable {
         this.type = typeFood;
         this.name = name;
         this.price = price;
-        this.ingredient = new ArrayList<>(Arrays.asList(ingredient));
+        this.ingredientList = new ArrayList<>(Arrays.asList(ingredient));
     }
 
 
@@ -34,7 +34,7 @@ public class Food implements Serializable {
         this.type = typeFood;
         this.name = name;
         this.price = price;
-        this.ingredient = ingredient;
+        this.ingredientList = ingredient;
     }
 
 
@@ -42,17 +42,22 @@ public class Food implements Serializable {
 
     public void setPrice(double price){this.price = price;}
 
-    public void setIngredients(List<Ingredient> ingredient) {this.ingredient = ingredient;}
+    public void setIngredients(List<Ingredient> ingredient) {this.ingredientList = ingredient;}
 
     public String getName() {return name;}
 
-    public List<Ingredient> getIngredients() {return ingredient;}
+    public List<Ingredient> getIngredients() {return ingredientList;}
 
     public double getPrice() {return price;}
 
 
     public String print() {
-        return String.format("%-50s%-5s €\n\tIngredients: %-5s\n", name, String.format("%.2f", price), ingredient.toString().toLowerCase());
+        String ingredientsPrint = "";
+        for(Ingredient ingredient : ingredientList){
+            ingredientsPrint +=ingredient.getName().toLowerCase() + "  ";
+        }
+
+        return String.format("%-50s%-5s €\n\tIngredients: %-5s\n", name, String.format("%.2f", price), ingredientsPrint);
     }
 
 }
