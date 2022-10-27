@@ -36,8 +36,9 @@ public class Menu implements Serializable {
     public void addDrink (String name, Ingredient ingredient, double price){
         this.drinks.add(new Drink(name, ingredient, price));
     }
-    public void addDrink (String name, List<Ingredient>ingredient, double price){
+    public void addDrink (String name, List<Ingredient> ingredient, double price){
         this.drinks.add(new Drink(name, ingredient, price));
+
     }
 
 

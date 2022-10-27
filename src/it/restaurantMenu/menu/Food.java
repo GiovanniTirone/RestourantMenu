@@ -10,7 +10,8 @@ import java.util.List;
 public class Food implements Serializable {
     public TypeFood type;
     public String name;
-    public List<Ingredient> ingredientList;
+
+    public List<Ingredient> ingredientList; //to map
 
 
     public double price;
@@ -20,7 +21,6 @@ public class Food implements Serializable {
         this.name = name;
         this.price = price;
     }
-
 
     public Food(TypeFood typeFood, String name, Ingredient ingredient, double price) {
         this.type = typeFood;
@@ -47,6 +47,7 @@ public class Food implements Serializable {
     public String getName() {return name;}
 
     public List<Ingredient> getIngredients() {return ingredientList;}
+
 
     public double getPrice() {return price;}
 
