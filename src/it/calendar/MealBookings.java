@@ -1,13 +1,10 @@
-package it.restaurantMenu.calendar;
-import tables.MyTables;
+package it.calendar;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class MealBookings extends ArrayList <Booking>{
 
@@ -38,6 +35,24 @@ public class MealBookings extends ArrayList <Booking>{
         return takenTables;
     }
 
+    public JTable createTable () {
+        String col[] = {"Meal","Date","Time","Name", "Number Table"};
+        DefaultTableModel tableModel = new DefaultTableModel(col, 0); // The 0 argument is number rows.
+        JTable table = new JTable(tableModel);
+        //sortBookings(); agigungere
+        for(Booking b : this){
+            tableModel.addRow(new Object[]{typeMeals.getName(),b.date,b.time,b.name,b.tableNumber});
+        }
+        return table;
+    }
 
+    public void sortBookings () {
+        this.sort(new Comparator<Booking>() {
+            @Override
+            public int compare(Booking b1,Booking b2) {
+                return b1.date.compareTo(b2.date);
+            }
+        });
+    }
 
 }

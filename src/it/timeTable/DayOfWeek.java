@@ -1,6 +1,6 @@
-package it.restaurantTimeTable.timeTable;
+package it.timeTable;
 
-public enum DayOfWeek {
+public enum DayOfWeek  {
     Sunday(true,true),
     Monday(false,false),
     Tuesday(true,false),

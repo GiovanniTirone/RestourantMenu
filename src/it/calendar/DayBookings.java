@@ -1,8 +1,6 @@
-package it.restaurantMenu.calendar;
-import calendar.Prenotation;
-import it.restaurantTimeTable.timeTable.TimeTable;
-import tables.MyTables;
-
+package it.calendar;
+import it.timeTable.TimeTable;
+import it.utilities.tables.MyTables;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -38,20 +36,17 @@ public class DayBookings {
         this.mealBookingsMap = mealBookingsMap;
     }
 
-    public void addBooking(String name, int tableNumber, int peopleNumber, LocalDate date, LocalTime time, TimeTable timeTable){
+    public void addBooking(String name, int tableNumber, int peopleNumber, LocalDate date, LocalTime time, TimeTable timeTable) throws Exception {
         TypeMeals typeMeals = timeTable.getTypeMealsByTime(time);
         mealBookingsMap.get(typeMeals).add(new Booking(name,peopleNumber,tableNumber,date,time));
     }
 
 
-
-    //JTABLE
-
     public JTable createTable () {
-        for()
-        return MyTables.concat( lunchBookings.createTable("LUNCH"),
-                dinnerBookings.createTable("DINNER"),
-                new String[]{"","Date","Time","Name", "Number Table"});
+        JTable mealBookingsArrayTables [] =  Arrays.stream(mealBookingsMap.values().toArray(new MealBookings[0]))
+                                                .map(mealBookings -> mealBookings.createTable())
+                                                .toArray(JTable[]::new);
+        return MyTables.concatArray(mealBookingsArrayTables, new String[]{"","Date","Time","Name", "Number Table"});
     }
 
 

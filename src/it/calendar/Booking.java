@@ -1,8 +1,5 @@
-package it.restaurantMenu.calendar;
+package it.calendar;
 
-import tables.MyTables;
-
-import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

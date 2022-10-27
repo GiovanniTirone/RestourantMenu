@@ -1,7 +1,8 @@
-package it.restaurantMenu.calendar;
-import it.restaurantMenu.restaurant.Restaurant;
-import it.restaurantTimeTable.timeTable.TimeTable;
-import tables.MyTables;
+package it.calendar;
+import it.restaurant.Restaurant;
+import it.timeTable.TimeTable;
+import it.timeTable.Week;
+import it.utilities.tables.MyTables;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
@@ -42,9 +43,10 @@ public class Calendar {
         return null;
     }
 
-    public  int bookTable (LocalDate date, LocalTime time, int peopleNumber, String name, TimeTable timetable, Restaurant restaurant){
+    public  int bookTable (String name, int peopleNumber, LocalDate date, LocalTime time, Week week, Restaurant restaurant) throws Exception {
         if(date.isBefore(LocalDate.now())) return -1;
-        TypeMeals typeMeals = timetable.getTypeMealsByTime(time);
+        TimeTable timeTable = week.getTimeTableOfDate(date);
+        TypeMeals typeMeals = timeTable.getTypeMealsByTime(time);
         if(typeMeals == null) return -2;
         DayBookings targetDayBookings = searchDayBookings(date);
         int freeTable = checkFreeTable(targetDayBookings,time,peopleNumber,typeMeals,restaurant);
@@ -54,10 +56,10 @@ public class Calendar {
         }
         if(freeTable>0){
             if(targetDayBookings!=null) {
-                targetDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timetable);
+                targetDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
             } else{
                 DayBookings newDayBookings = new DayBookings(date);
-                newDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timetable);
+                newDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
                 dayBookingsList.add(newDayBookings);
             }
             return freeTable;

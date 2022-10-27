@@ -1,10 +1,4 @@
-package it.restaurantMenu.restaurant;
-
-import calendar.MealBookings;
-import calendar.Prenotation;
-
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
+package it.restaurant;
 import java.util.*;
 
 public class Restaurant {
@@ -16,6 +10,11 @@ public class Restaurant {
     public Restaurant(String name){
         this.name = name;
         this.tablesMap = new HashMap<>();
+        tablesMap.put(1,new Table(1,3));
+        tablesMap.put(2,new Table(2,4));
+        tablesMap.put(3,new Table(3,4));
+        tablesMap.put(4,new Table(4,5));
+        tablesMap.put(5,new Table(5,8));
     }
 
     public void addTable (int number, int seating) throws Exception{
@@ -27,9 +26,9 @@ public class Restaurant {
 
     /**
      * This method returns the number of the free table of the number of seats that comes closest to peopleNumber. If there
-     * aren't free tables, it return a negative integer.
+     * aren't free it.utilities.tables, it return a negative integer.
      * @param peopleNumber Number of minimum seating required on the table
-     * @param freeTablesNumbers The numbers of free tables
+     * @param freeTablesNumbers The numbers of free it.utilities.tables
      * @return  The number of the free table of the number of seats that comes closest to peopleNumber.
      */
     public int getTableFromFreeTables(int peopleNumber, Set<Integer> freeTablesNumbers){

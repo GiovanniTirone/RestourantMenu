@@ -1,4 +1,4 @@
-package it.restaurantMenu.calendar;
+package it.calendar;
 
 public enum TypeMeals {
 
@@ -8,14 +8,12 @@ public enum TypeMeals {
     DINNER
     ;
 
-    String name;
+    protected String name;
 
     TypeMeals() {
         this.name = this.name().charAt(0) + this.name().substring(1).toLowerCase();
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 
 }

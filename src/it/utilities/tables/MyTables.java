@@ -1,4 +1,4 @@
-package tables;
+package it.utilities.tables;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +21,15 @@ public class MyTables {
                 row[j] = (t2.getValueAt(i,j));
             }
             tableModel.addRow(row);
+        }
+        return table;
+    }
+
+    public static JTable concatArray (JTable tabArray [],  Object col []){
+        DefaultTableModel tableModel = new DefaultTableModel(col, 0); // The 0 argument is number rows.
+        JTable table = new JTable(tableModel);
+        for(JTable tab : tabArray){
+            table = concat(table,tab,col);
         }
         return table;
     }

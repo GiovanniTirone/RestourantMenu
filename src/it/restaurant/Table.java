@@ -1,4 +1,4 @@
-package it.restaurantMenu.restaurant;
+package it.restaurant;
 
 public class Table {
 

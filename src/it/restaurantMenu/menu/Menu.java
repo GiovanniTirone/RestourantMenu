@@ -2,7 +2,6 @@ package it.restaurantMenu.menu;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Menu implements Serializable {

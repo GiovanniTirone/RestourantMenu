@@ -1,4 +1,4 @@
-package it.restaurantTimeTable.timeTable;
+package it.timeTable;
 
 public enum OpenClosure {
     OPEN,

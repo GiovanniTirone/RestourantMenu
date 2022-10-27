@@ -1,10 +1,10 @@
-package it.restaurantTimeTable.timeTable;
+package it.timeTable;
 import it.restaurantMenu.menu.Menu;
 
 public class Day {
-    DayOfWeek name;
-    Menu menu;
-    TimeTable timeTable;
+    protected DayOfWeek name;
+    protected Menu menu;
+    protected TimeTable timeTable;
 
     public Day (DayOfWeek name){
         this.name = name;
@@ -35,8 +35,9 @@ public class Day {
     }
 
 
-    public String print () {
-        String strTT = timeTable == null ? " null" : "\n " + timeTable.print();
+
+    public String printDetails() {
+        String strTT = timeTable == null ? " null" : "\n " + timeTable.printDetails();
         return "Day: " + name.print() +
                 "\n TimeTable: " +  strTT;
     }

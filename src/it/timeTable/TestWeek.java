@@ -1,4 +1,4 @@
-package it.restaurantTimeTable.timeTable;
+package it.timeTable;
 
 public class TestWeek {
     public static void main (String ...args){
@@ -6,7 +6,7 @@ public class TestWeek {
         week.setStandardWeekdaysTimeTable();
         week.setStandardWeekendTimeTable();
         week.setStandardTimeTableForAllDays();
-        System.out.println(week.print());
+        System.out.println(week.printDetails());
     }
 
 }
