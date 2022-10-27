@@ -25,25 +25,31 @@ public class Restaurant {
         tablesMap.put(number,new Table(number,seating));
     }
 
-
+    /**
+     * This method returns the number of the free table of the number of seats that comes closest to peopleNumber. If there
+     * aren't free tables, it return a negative integer.
+     * @param peopleNumber Number of minimum seating required on the table
+     * @param freeTablesNumbers The numbers of free tables
+     * @return  The number of the free table of the number of seats that comes closest to peopleNumber.
+     */
     public int getTableFromFreeTables(int peopleNumber, Set<Integer> freeTablesNumbers){
         int assignedTable =-1;
         int assignedTableSeats = -1;
-        for(Table t : tables){
+        for(Table t : tablesMap.values()){
             if(freeTablesNumbers.contains(t.number)) {
-                if (t.seats >= peopleNumber) {
-                    if (t.seats == peopleNumber) {
+                if (t.seating >= peopleNumber) {
+                    if (t.seating == peopleNumber) {
                         assignedTable = t.number;
                         break;
                     }
-                    if (t.seats < assignedTableSeats) {
+                    if (t.seating < assignedTableSeats) {
                         assignedTable = t.number;
-                        assignedTableSeats = t.seats;
+                        assignedTableSeats = t.seating;
                         continue;
                     }
                     if (assignedTable < 0) {
                         assignedTable = t.number;
-                        assignedTableSeats = t.seats;
+                        assignedTableSeats = t.seating;
                     }
                 }
             }
@@ -53,13 +59,13 @@ public class Restaurant {
 
     public  int getTableFromAllTables (int peopleNumber) {
         Set<Integer>tablesNumbers = new HashSet<>();
-        Arrays.stream(tables).forEach(t -> tablesNumbers.add(t.number));
+        tablesMap.values().forEach(t -> tablesNumbers.add(t.number));
         return getTableFromFreeTables(peopleNumber,tablesNumbers);
     }
 
     public Set<Integer> getFreeTables (Set<Integer> takenTables) {
         Set<Integer> freeTables = new HashSet<>();
-        for(Table table : restaurant.tables){
+        for(Table table : tablesMap.values()){
             if(takenTables.contains(table.number)) continue;
             else freeTables.add(table.number);
         }
@@ -74,11 +80,9 @@ public class Restaurant {
         }
     }
 
-    public Table getTableByNumber(int number) {
-        for (Table t : tables) {if(t.number == number) return t;}
-        return null;
-    }
 
+
+    /*
     public Map<String,Object> getFirstFreeTableAtTime (LocalTime time, int peopleNumber, MealBookings mealBookings, TimeTable timeTable) {
         List <Long> distances = new ArrayList<>();
         List <Integer> distancesNumberTables = new ArrayList<>();
@@ -103,4 +107,6 @@ public class Restaurant {
         NumberAndTime.put("timeOfFreeTable",newTime);
         return NumberAndTime;
     }
+
+     */
 }

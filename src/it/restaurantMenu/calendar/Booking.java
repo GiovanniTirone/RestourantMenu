@@ -4,15 +4,15 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Booking {
-    private String name;
-    private int peopleNumber;
-    private int tableNumber;
-    private LocalDate date;
-    private LocalTime time;
+    protected String name;
+    protected int peopleNumber;
+    protected int tableNumber;
+    protected LocalDate date;
+    protected LocalTime time;
 
-    public Booking (String name, int numberOfPeople, int tableNumber, LocalDate date, LocalTime time){
+    public Booking (String name, int peopleNumber, int tableNumber, LocalDate date, LocalTime time){
         this.name = name;
-        this.peopleNumber = numberOfPeople;
+        this.peopleNumber = peopleNumber;
         this.tableNumber = tableNumber;
         this.date = date;
         this.time = time;

@@ -7,8 +7,8 @@ import java.util.*;
 
 public class DayBookings {
 
-    private LocalDate date;
-    private Map <TypeMeals,MealBookings> mealBookingsMap ;
+    protected LocalDate date;
+    protected Map <TypeMeals,MealBookings> mealBookingsMap ;
 
 
     public DayBookings(LocalDate date){
@@ -40,7 +40,11 @@ public class DayBookings {
         mealBookingsMap.get(typeMeals).add(new Booking(name,peopleNumber,tableNumber,date,time));
     }
 
+
+
     //JTABLE
+
+
 
 
 }
