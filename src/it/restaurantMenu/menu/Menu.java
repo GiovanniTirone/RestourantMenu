@@ -1,6 +1,8 @@
 package it.restaurantMenu.menu;
 
 
+import it.restaurantWarehouse.warehouse.Ingredients;
+
 import java.util.List;
 
 public class Menu {
@@ -32,13 +34,13 @@ public class Menu {
 
 
 
-    public void addDrink (String name, DishIngredients ingredient, double price){this.drinks.add(new Drink(name, ingredient, price));}
-    public void addDrink (String name, List<DishIngredients>ingredients, double price){this.drinks.add(new Drink(name,ingredients, price));}
+    public void addDrink (String name, Ingredients ingredient, double price){this.drinks.add(new Drink(name, ingredient, price));}
+    public void addDrink (String name, List<Ingredients>ingredients, double price){this.drinks.add(new Drink(name,ingredients, price));}
 
-    public void addFood (TypeFood typeFood, String name, DishIngredients ingredient, double price){
+    public void addFood (TypeFood typeFood, String name, Ingredients ingredient, double price){
             getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredient,price));
     }
-    public void addFood (TypeFood typeFood, String name, List<DishIngredients>ingredients, double price){
+    public void addFood (TypeFood typeFood, String name, List<Ingredients>ingredients, double price){
             getDishListByTypeFood(typeFood).add(new Food(typeFood, name,ingredients,price));
     }
 

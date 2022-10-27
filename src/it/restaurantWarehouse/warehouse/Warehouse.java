@@ -26,7 +26,7 @@ public class Warehouse {
     }
 
     public void removeFromWarehouse(String name){
-        for (Ingredients ingredient: ingredientsList) {
+        for (Ingredients ingredient: new ArrayList<>(ingredientsList)) {
             if (name.equals(ingredient.getName())) {
                 ingredientsList.remove(ingredient);
                 //System.out.println("'" + ingredient.getName() + "'" + " has been removed from the warehouse.");
