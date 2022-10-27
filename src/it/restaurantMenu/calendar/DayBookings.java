@@ -1,6 +1,9 @@
 package it.restaurantMenu.calendar;
 import calendar.Prenotation;
 import it.restaurantTimeTable.timeTable.TimeTable;
+import tables.MyTables;
+
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -44,7 +47,12 @@ public class DayBookings {
 
     //JTABLE
 
-
+    public JTable createTable () {
+        for()
+        return MyTables.concat( lunchBookings.createTable("LUNCH"),
+                dinnerBookings.createTable("DINNER"),
+                new String[]{"","Date","Time","Name", "Number Table"});
+    }
 
 
 }
