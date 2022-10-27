@@ -17,6 +17,7 @@ public class Restaurant {
         tablesMap.put(5,new Table(5,8));
     }
 
+
     public void addTable (int number, int seating) throws Exception{
         if(tablesMap.keySet().stream().anyMatch(numberTable -> numberTable == number)) {
             throw  new Exception("A table with this number already exists");
@@ -56,12 +57,22 @@ public class Restaurant {
         return assignedTable;
     }
 
+    /**
+     * Return a free table assuming that all the tables are free.
+     * @param peopleNumber Number of minimun seating of the table
+     * @return The number of a free table using the method getFreeTableFromFreeTables
+     */
     public  int getTableFromAllTables (int peopleNumber) {
         Set<Integer>tablesNumbers = new HashSet<>();
         tablesMap.values().forEach(t -> tablesNumbers.add(t.number));
         return getTableFromFreeTables(peopleNumber,tablesNumbers);
     }
 
+    /**
+     * It returns a set with the numbers of free tables, knowing the taken tables numbers
+     * @param takenTables A set of numbers of taken tables
+     * @return   A set with the numbers of free tables
+     */
     public Set<Integer> getFreeTables (Set<Integer> takenTables) {
         Set<Integer> freeTables = new HashSet<>();
         for(Table table : tablesMap.values()){
@@ -71,6 +82,13 @@ public class Restaurant {
         return freeTables;
     }
 
+    /**
+     * This method returns a number of a free table using the method getFreeTableFromFreeTables. If the free table doesn't
+     * exist, it returns a negative integer.
+     * @param peopleNumber Number of minimun seating of the table
+     * @param takenTables  A set that contains the numbers of the taken tables
+     * @return The number of a free table using the method getFreeTableFromFreeTables
+     */
     public int getFreeTable(int peopleNumber, Set<Integer>takenTables){
         Set<Integer> freeTables = getFreeTables(takenTables);
         if(freeTables.size()>0) return getTableFromFreeTables(peopleNumber,freeTables);

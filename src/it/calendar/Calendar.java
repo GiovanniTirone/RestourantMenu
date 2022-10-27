@@ -20,8 +20,16 @@ public class Calendar {
 
     public static Calendar getCalendar ( ) {return calendar;}
 
-    //Returns the number of a free table, if it doesn't exist returns a negative number
-    public int checkFreeTable (DayBookings targetDayBookings, LocalTime time, int peopleNumber, TypeMeals typeMeal, Restaurant restaurant) {
+    /**This method searches into the dayBookingList from a free table.
+     *
+     * @param targetDayBookings
+     * @param time
+     * @param peopleNumber
+     * @param typeMeal
+     * @param restaurant
+     * @return
+     */
+    public int searchFreeTable(DayBookings targetDayBookings, LocalTime time, int peopleNumber, TypeMeals typeMeal, Restaurant restaurant) {
 
         if(dayBookingsList.size() == 0) {
             return restaurant.getTableFromAllTables(peopleNumber);
@@ -43,29 +51,38 @@ public class Calendar {
         return null;
     }
 
+    /**
+     * This method is used to add a new booking to the dayBookingList. The booking cannot happen
+     * if the date is before the current date or if the time doesn't fit in the timetable of the day of the week. In
+     * these cases the method returns a negative integer. If these cases do not arise, the method search from
+     * a free table with the method searchFreeTable. If the return is negative, the booking fails,
+     * otherwise the method add a new booking to the dayBookings of the corresponding date, if already exists,
+     * if not, the method creates a new DayBookings with the new booking. Finally, the method returns the number of the booked table.
+     * @param name  Name of the person who is booking the table
+     * @param peopleNumber Number of minimun seating of the table
+     * @param date The date of booking
+     * @param time The time of booking
+     * @param week The week of the restaurant, where is set the timetable for each day
+     * @param restaurant A restaurant object, that contains all the tables
+     * @return The number of a free table, if exists, if not, it returns a negative integer.
+     * @throws Exception There is an exception if the time required doesn't fit in the timetable of the restaurant
+     */
     public  int bookTable (String name, int peopleNumber, LocalDate date, LocalTime time, Week week, Restaurant restaurant) throws Exception {
         if(date.isBefore(LocalDate.now())) return -1;
         TimeTable timeTable = week.getTimeTableOfDate(date);
         TypeMeals typeMeals = timeTable.getTypeMealsByTime(time);
         if(typeMeals == null) return -2;
         DayBookings targetDayBookings = searchDayBookings(date);
-        int freeTable = checkFreeTable(targetDayBookings,time,peopleNumber,typeMeals,restaurant);
-
-        if(freeTable<0){
-            return -3;
-        }
-        if(freeTable>0){
-            if(targetDayBookings!=null) {
-                targetDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
-            } else{
-                DayBookings newDayBookings = new DayBookings(date);
-                newDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
-                dayBookingsList.add(newDayBookings);
-            }
-            return freeTable;
+        int freeTable = searchFreeTable(targetDayBookings,time,peopleNumber,typeMeals,restaurant);
+        if(freeTable<0) return -3 ;
+        if(targetDayBookings!=null) {
+            targetDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
         } else {
-            return -1;
+            DayBookings newDayBookings = new DayBookings(date);
+            newDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
+            dayBookingsList.add(newDayBookings);
         }
+        return freeTable;
     }
 
     public JTable createTable (){
