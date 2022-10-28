@@ -97,33 +97,4 @@ public class Restaurant {
         }
     }
 
-
-
-    /*
-    public Map<String,Object> getFirstFreeTableAtTime (LocalTime time, int peopleNumber, MealBookings mealBookings, TimeTable timeTable) {
-        List <Long> distances = new ArrayList<>();
-        List <Integer> distancesNumberTables = new ArrayList<>();
-        long maxDistance = Long.MIN_VALUE;
-        int maxDistanceTable = -1;
-        LocalTime newTime = time;
-        for(Prenotation p : mealBookings){
-            if(getTableByNumber(p.numberTable).seats<peopleNumber) continue;
-            long dist = ChronoUnit.MINUTES.between(time,p.time);
-            newTime = time.plusMinutes(dist);
-            if(!timeTable.timeIsInOpeningRange(newTime)) continue;
-            distances.add(dist);
-            distancesNumberTables.add(p.numberTable);
-            if (Math.abs(dist) > Math.abs(maxDistance)) {
-                maxDistance = dist;
-                maxDistanceTable = p.numberTable;
-            }
-        }
-        if(maxDistanceTable<0) return null;
-        Map<String,Object> NumberAndTime = new HashMap<>();
-        NumberAndTime.put("numberOfFreeTable",maxDistanceTable);
-        NumberAndTime.put("timeOfFreeTable",newTime);
-        return NumberAndTime;
-    }
-
-     */
 }
