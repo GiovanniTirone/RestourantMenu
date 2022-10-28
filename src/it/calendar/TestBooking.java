@@ -1,14 +1,10 @@
 package it.calendar;
 
 import it.restaurant.Restaurant;
-import it.restaurantMenu.menu.Menu;
-import it.restaurantMenu.menu.utilities.MenuSerializable;
-import it.timeTable.TestWeek;
 import it.timeTable.Week;
 import it.utilities.tables.MyTables;
-import user.User;
+import it.user.User;
 
-import java.lang.annotation.Retention;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

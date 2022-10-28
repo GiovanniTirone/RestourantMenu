@@ -9,6 +9,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
+
+/**
+ * This class is used to save the dayBookings in the list dayBookingsList. For add a new booking the class uses the method
+ * bookTable, which in turn uses searchFreeTable to search for a free table in a particular date and time.
+ */
 public class Calendar {
 
     public  List<DayBookings> dayBookingsList;
@@ -20,14 +25,18 @@ public class Calendar {
 
     public static Calendar getCalendar ( ) {return calendar;}
 
-    /**This method searches into the dayBookingList from a free table.
+    /**This method searches into the dayBookingList from a free table. If there aren't dayBookings in the list or if the
+     * targetDayBookings is null, the method searches for a free table invoking the method getTableFromALlTables of
+     * the class Restaurant. Otherwise, the method creates a set of taken tables invoking the method getTakenTablesAtTime
+     * of the class MealBookings and then pass this value to the method getFreeTable of the class Restaurant. In this way
+     * the return is the number of a free table, if exists, and a negative integer, if not.
      *
-     * @param targetDayBookings
-     * @param time
-     * @param peopleNumber
-     * @param typeMeal
-     * @param restaurant
-     * @return
+     * @param targetDayBookings The dayBookings corresponding to the date of the booking to add
+     * @param time The time of the booking
+     * @param peopleNumber The minimun number of seating of the table
+     * @param typeMeal This is in reality not necessary, because it depends on the time
+     * @param restaurant The restaurant with the tables
+     * @return The number of a free table, if exists, and a negative integer, if not.
      */
     public int searchFreeTable(DayBookings targetDayBookings, LocalTime time, int peopleNumber, TypeMeals typeMeal, Restaurant restaurant) {
 
@@ -76,10 +85,10 @@ public class Calendar {
         int freeTable = searchFreeTable(targetDayBookings,time,peopleNumber,typeMeals,restaurant);
         if(freeTable<0) return -3 ;
         if(targetDayBookings!=null) {
-            targetDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
+            targetDayBookings.addBooking(name,freeTable,peopleNumber,date,time,week);
         } else {
             DayBookings newDayBookings = new DayBookings(date);
-            newDayBookings.addBooking(name,freeTable,peopleNumber,date,time,timeTable);
+            newDayBookings.addBooking(name,freeTable,peopleNumber,date,time,week);
             dayBookingsList.add(newDayBookings);
         }
         return freeTable;

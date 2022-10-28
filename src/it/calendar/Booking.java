@@ -3,6 +3,11 @@ package it.calendar;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * This class is used to create new bookings. A booking consists of a name, the name of the person who made the booking,
+ * the peopleNumber, i.e. the number of people who are supposed to use the table, a tableNumber, i.e. the number of the
+ * table booked, a date and a time that indicate the time coordinates of the booking.
+ */
 public class Booking {
     protected String name;
     protected int peopleNumber;
@@ -59,7 +64,6 @@ public class Booking {
         this.tableNumber = tableNumber;
     }
 
-    //JTABLE
 
 
 }

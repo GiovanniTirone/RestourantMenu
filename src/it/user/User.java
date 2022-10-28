@@ -1,10 +1,9 @@
-package user;
+package it.user;
 import it.calendar.Calendar;
 import it.restaurant.Restaurant;
 import it.timeTable.Week;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Map;
 
 public class User {
     String name;
