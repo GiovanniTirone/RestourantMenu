@@ -3,8 +3,11 @@ package it.restaurantMenu.menu;
 import it.restaurantWarehouse.warehouse.Ingredient;
 
 import java.io.Serializable;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Arrays;
+=======
+>>>>>>> feature/Booking/TimeTablesMap
 import java.util.List;
 
 public class Menu implements Serializable {

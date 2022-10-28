@@ -1,4 +1,7 @@
-package it.restaurantTimeTable.timeTable;
+package it.timeTable;
+import it.calendar.TypeMeals;
+
+import java.time.LocalDate;
 import java.util.Arrays;
 
 public class Week  {
@@ -10,6 +13,8 @@ public class Week  {
         this.days = Arrays.stream(DayOfWeek.values())
                           .map(dayOfWeek -> new Day(dayOfWeek))
                           .toArray(Day[]::new);
+        this.weekendTimeTable = new TimeTable();
+        this.weekdaysTimeTable = new TimeTable();
     }
 
     public Day[] getDays() {
@@ -18,6 +23,11 @@ public class Week  {
 
     public void setDays(Day[] days) {
         this.days = days;
+    }
+
+    public TimeTable getTimeTableOfDate (LocalDate date){
+        java.time.DayOfWeek dayOfWeek = date.getDayOfWeek();
+        return days[dayOfWeek.getValue()%7].getTimeTable();
     }
 
     public void setStandardTimeTableForAllDays () {
@@ -40,11 +50,10 @@ public class Week  {
     }
 
     public void setStandardWeekdaysTimeTable(){
-        this.weekdaysTimeTable = new TimeTable();
-        this.weekdaysTimeTable.setLunchOpeningTime(12,00);
-        this.weekdaysTimeTable.setLunchClosureTime(14,30);
-        this.weekdaysTimeTable.setDinnerOpeningTime(19,00);
-        this.weekdaysTimeTable.setDinnerClosureTime(22,00);
+        this.weekdaysTimeTable.setMealTime(TypeMeals.LUNCH,OpenClosure.OPEN,12,00);
+        this.weekdaysTimeTable.setMealTime(TypeMeals.LUNCH,OpenClosure.CLOSURE,14,30);
+        this.weekdaysTimeTable.setMealTime(TypeMeals.DINNER,OpenClosure.OPEN,19,00);
+        this.weekdaysTimeTable.setMealTime(TypeMeals.DINNER,OpenClosure.CLOSURE,22,00);
     }
 
     public TimeTable getWeekendTimeTable() {
@@ -56,18 +65,17 @@ public class Week  {
     }
 
     public void setStandardWeekendTimeTable() {
-        this.weekendTimeTable = new TimeTable();
-        this.weekendTimeTable.setLunchOpeningTime(11,30);
-        this.weekendTimeTable.setLunchClosureTime(15,00);
-        this.weekendTimeTable.setDinnerOpeningTime(19,00);
-        this.weekendTimeTable.setDinnerClosureTime(23,00);
+        this.weekendTimeTable.setMealTime(TypeMeals.LUNCH,OpenClosure.OPEN,11,30);
+        this.weekendTimeTable.setMealTime(TypeMeals.LUNCH,OpenClosure.CLOSURE,15,00);
+        this.weekendTimeTable.setMealTime(TypeMeals.DINNER,OpenClosure.OPEN,19,00);
+        this.weekendTimeTable.setMealTime(TypeMeals.DINNER,OpenClosure.CLOSURE,23,00);
     }
 
-    public String print () {
+    public String printDetails() {
         String daysStr =  "";
-        String weekdaysTT = weekdaysTimeTable == null ? "null" :  weekdaysTimeTable.print();
-        String weekendTT = weekendTimeTable == null ? "null" :  weekendTimeTable.print();
-        for(Day day: days){daysStr += "\n" + day.print();}
+        String weekdaysTT = weekdaysTimeTable == null ? "null" :  weekdaysTimeTable.printDetails();
+        String weekendTT = weekendTimeTable == null ? "null" :  weekendTimeTable.printDetails();
+        for(Day day: days){daysStr += "\n" + day.printDetails();}
         return "  WEEK : " +
                 "\ndays: " + daysStr +
                 "\nweekdaysTimeTable:\n" +   weekdaysTT +

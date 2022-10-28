@@ -12,13 +12,25 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException, FileNotFoundException {
         //create the menu:
-        Menu menu = new Menu();
+       Menu menu = new Menu();
 
+<<<<<<< HEAD
         //create the drinks:
         menu.addDrink("Acqua", new Ingredient("Acqua"), 2);
         menu.addDrink("Vino", new Ingredient("Uva"), 15);
         menu.addDrink("Birra", new ArrayList<>(Arrays.asList(new Ingredient("Acqua"),
                 new Ingredient("Lievito"),new Ingredient("Luppolo"))), 6);
+=======
+    /*        //Menu menu = new Menu();
+
+        //create the drinks:
+        menu.addDrink("Acqua", new Ingredient("Acqua") , 2);
+        menu.addDrink("Vino", new ArrayList<>(Arrays.asList()), 15);
+       // menu.addDrink("Birra",", 6);
+        menu.addDrink("Caffe", new ArrayList<>(Arrays.asList(Ingredient.ACQUA, Ingredient.CAFFE)), 3);
+        menu.addDrink("The", new ArrayList<>(Arrays.asList(Ingredient.ACQUA, Ingredient.THE)), 3);
+        menu.addDrink("Aranciata",new ArrayList<>(Arrays.asList(Ingredient.ARANCIA, Ingredient.ACQUA, Ingredient.ZUCCHERO)), 3);
+>>>>>>> feature/Booking/TimeTablesMap
 
         //create the First:
         menu.addFood(TypeFood.FIRST,"Insalata di riso e melone",new ArrayList<>(Arrays.asList(
@@ -51,6 +63,7 @@ public class Main {
          - create file txt for menu, save and write menu on file txt
          - read menu from file txt, print all lines
          */
+        /*
         MenuFileTxt menuFileTxt = new MenuFileTxt();
         menuFileTxt.writeOnFile(menu, "menu-" + menu.type.toLowerCase() +".txt");
         menuFileTxt.readFromFile("menu-" + menu.type.toLowerCase() +".txt");
@@ -60,12 +73,13 @@ public class Main {
          - create file bin for menu, save and serialize menu on file bin
          - deserialize menu from file bin, get back the menu's object structure
          */
+        /*
         MenuSerializable menuSerializable = new MenuSerializable();
         menuSerializable.writeObject(menu, "menu-" + menu.type.toLowerCase() + ".bin");
 
         System.out.println("\nDeserialization Object\n");
         Menu menuDes = menuSerializable.readObject("menu-" + menu.type.toLowerCase() + ".bin");
         System.out.println(menuDes.printMenuDetails());
-
+        */
     }
 }
