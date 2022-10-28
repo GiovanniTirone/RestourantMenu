@@ -1,7 +1,7 @@
 package it.calendar;
 import it.restaurant.Restaurant;
-import it.timeTable.TimeTable;
-import it.timeTable.Week;
+import it.restaurantTimeTable.timeTable.TimeTable;
+import it.restaurantTimeTable.timeTable.Week;
 import it.calendar.jtabs.MyTables;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

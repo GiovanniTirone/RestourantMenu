@@ -1,7 +1,7 @@
 package it.user;
 import it.calendar.Calendar;
 import it.restaurant.Restaurant;
-import it.timeTable.Week;
+import it.restaurantTimeTable.timeTable.Week;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

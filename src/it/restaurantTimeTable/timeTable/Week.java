@@ -1,4 +1,4 @@
-package it.timeTable;
+package it.restaurantTimeTable.timeTable;
 import it.calendar.TypeMeals;
 
 import java.time.LocalDate;

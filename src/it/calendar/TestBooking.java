@@ -1,6 +1,6 @@
 package it.calendar;
 import it.restaurant.Restaurant;
-import it.timeTable.Week;
+import it.restaurantTimeTable.timeTable.Week;
 import it.calendar.jtabs.MyTables;
 import it.user.User;
 import java.time.LocalDate;

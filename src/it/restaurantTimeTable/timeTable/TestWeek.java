@@ -1,4 +1,4 @@
-package it.timeTable;
+package it.restaurantTimeTable.timeTable;
 
 public class TestWeek {
     public static void main (String ...args){
