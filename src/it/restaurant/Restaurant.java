@@ -27,9 +27,14 @@ public class Restaurant {
 
     /**
      * This method returns the number of the free table of the number of seats that comes closest to peopleNumber. If there
-     * aren't free it.utilities.tables, it return a negative integer.
+     * aren't free tables, it returns a negative integer. The method iterates over the tables, after check if the
+     * number of the current iterating table is contained in the freeTablesNumbers, there is a check on the number of seating,
+     * they must be greater or equal the peopleNumber. If the check is passed, if exists, the method returns the number of
+     * the first table with its seating number exactly equals to the peopleNumber. If that table doesn't exist, the method
+     * checks if the number of seating of the current table is less than the assignedTableSeats, in that case the method reassigns
+     * that variable.
      * @param peopleNumber Number of minimum seating required on the table
-     * @param freeTablesNumbers The numbers of free it.utilities.tables
+     * @param freeTablesNumbers The numbers of free it.calendar.tables
      * @return  The number of the free table of the number of seats that comes closest to peopleNumber.
      */
     public int getTableFromFreeTables(int peopleNumber, Set<Integer> freeTablesNumbers){

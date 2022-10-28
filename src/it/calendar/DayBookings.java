@@ -1,7 +1,7 @@
 package it.calendar;
 import it.timeTable.TimeTable;
 import it.timeTable.Week;
-import it.utilities.tables.MyTables;
+import it.calendar.jtabs.MyTables;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalTime;

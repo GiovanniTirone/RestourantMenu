@@ -1,10 +1,8 @@
 package it.calendar;
-
 import it.restaurant.Restaurant;
 import it.timeTable.Week;
-import it.utilities.tables.MyTables;
+import it.calendar.jtabs.MyTables;
 import it.user.User;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 

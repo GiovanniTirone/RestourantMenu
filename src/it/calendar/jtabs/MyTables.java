@@ -1,4 +1,4 @@
-package it.utilities.tables;
+package it.calendar.jtabs;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
