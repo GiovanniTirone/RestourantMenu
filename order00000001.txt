@@ -1,0 +1,13 @@
+         Ristorante Team-1
+
+ORDER n. 00000001
+30 OCTOBER 2022 19:26
+-----------------------------------
+Acqua                                             2,00  €
+Insalata di riso e melone                         11,00 €
+Spaghetti ai carciofi e limone                    14,00 €
+Polpettone di fagioli e tofu alle erbe            13,00 €
+Zucchine ripiene con crema di fagioli bianchi     14,00 €
+Tiramisu' vegano                                  12,00 €
+-----------------------------------
+TOTAL                                             66,00 €
